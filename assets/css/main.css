@@ -229,4 +229,26 @@ h4 {
     justify-content: flex-end;
 }
 
+.registerPasswordToolTip {
+    position: relative;
+    display: inline-block;
+}
+
+.registerPasswordToolTip .registerPasswordToolTipText {
+    visibility: hidden;
+    position:absolute;
+    left: 7em;
+    top: 3.3em;
+    border-radius: 1em;
+    z-index: 1;
+    background-color: #251B37;
+    color: white;
+    padding: 0.5em;
+    width: 32em;
+}
+
+.registerPasswordToolTip:hover .registerPasswordToolTipText {
+    visibility: visible;
+}
+
 /*END OF REGISTER PAGE*/

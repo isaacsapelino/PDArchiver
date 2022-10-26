@@ -24,9 +24,9 @@ class Role (models.Model):
 # PDF BASE USER: USER MODEL WHICH HANDLES ALL THE MODELS FOR ANY KIND OF USERS.
 
 class PDFBaseUser(AbstractBaseUser, PermissionsMixin):
+    userId = models.CharField(max_length=150, unique=True)
     email = models.EmailField(gettext_lazy('email address'), unique=True)
     studentNumber = models.CharField(max_length=7, null=False)
-    userId = models.CharField(max_length=150, unique=True)
     firstName = models.CharField(max_length=255, null=False)
     middleName = models.CharField(max_length=255)
     lastName = models.CharField(max_length=255, null=False)
@@ -39,7 +39,7 @@ class PDFBaseUser(AbstractBaseUser, PermissionsMixin):
     objects = PDFUserManager()
 
     USERNAME_FIELD = 'userId'
-    REQUIRED_FIELDS = ['email', 'lastName', 'firstName']
+    REQUIRED_FIELDS = ['email', 'firstName', 'lastName', ]
 
     def __str__(self):
         return self.userId

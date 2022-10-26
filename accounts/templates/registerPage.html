@@ -53,11 +53,17 @@
 								{{form.lastName}}
 								<label for="id_lastName" class="registerDialogLabel">Last Name:</label>
 							</div>
-							<div class="input-field col s6" style="padding-left: 7em">
+							<div class="input-field col s6 registerPasswordToolTip" style="padding-left: 7em">
 								{{form.password1}}
 								<label for="id_password1" class="registerDialogLabel" style="padding-left: 5.5em"
 									>Password</label
 								>
+								<span class="registerPasswordToolTipText">
+									Your password can’t be too similar to your other personal information.<br />
+									Your password must contain at least 8 characters. <br />
+									Your password can’t be a commonly used password. <br />
+									Your password can’t be entirely numeric.
+								</span>
 							</div>
 						</div>
 						<div class="row">
