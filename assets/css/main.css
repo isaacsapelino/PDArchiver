@@ -156,7 +156,7 @@
 .show {
     visibility: visible;
     opacity: 1;
-    transition: 1;
+    transition: 1s;
 }
 
 .loginSwitchLinks {
