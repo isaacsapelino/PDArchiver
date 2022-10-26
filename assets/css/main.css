@@ -21,7 +21,7 @@
     
 }
 
-.loginPageWrapperHeader h4 {
+h4 {
     font-family: 'Now', sans-serif !important;
     font-weight: 700;
     font-size: 25pt;
@@ -172,7 +172,61 @@
 /* END OF LOGIN PAGE */
 /* REGISTER PAGE CSS */
 .registerPage {
-    
+    background-color: #2d9817;
+    height: 100vh;
 }
 
-/**/
+.registerPageWrapperHeader {
+    display: flex;
+    width: 100%;
+    background-color: #1c4114;
+    padding-left: 3em;
+}
+
+.registerPageWrapper h4 {
+    font-size: 15pt;
+}
+
+.registerPageWrapperMainScreen {
+    display: flex;
+    flex-direction: column;
+    padding-left: 3em;
+    padding-right: 3em;
+    padding-bottom: 3em;
+    height: 100%;
+}
+
+.registerPageWrapperTitle {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.registerPageWrapperTitle h4 {
+    font-size: 20pt;
+}
+
+.registerPageWrapperDialog {
+    background-color: white;
+    margin-top: 1em;
+    width: 100%;
+    height: 35em;
+    padding: 3em;
+    border-radius: 3em;
+}
+
+.registerDialogLabel {
+    font-family: 'Now', sans-serif !important;
+    font-weight: 700;
+    font-size: 16pt !important;
+    color: black !important;
+}
+
+.registerMainScreenBottom {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/*END OF REGISTER PAGE*/

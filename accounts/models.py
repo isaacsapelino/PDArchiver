@@ -25,10 +25,11 @@ class Role (models.Model):
 
 class PDFBaseUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(gettext_lazy('email address'), unique=True)
-    studentNumber = models.CharField(max_length=7)
+    studentNumber = models.CharField(max_length=7, null=False)
     userId = models.CharField(max_length=150, unique=True)
-    firstName = models.CharField(max_length=255)
-    lastName = models.CharField(max_length=255)
+    firstName = models.CharField(max_length=255, null=False)
+    middleName = models.CharField(max_length=255)
+    lastName = models.CharField(max_length=255, null=False)
     roles = models.ManyToManyField(Role)
     dateJoined = models.DateTimeField(default=timezone.now)
 

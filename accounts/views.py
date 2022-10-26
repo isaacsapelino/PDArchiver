@@ -24,6 +24,7 @@ class loginPage(View):
 
         if user is not None:
             login(request, user)
+            return redirect('/search')
         else:
             print('User is incorrect')
         context={}
@@ -49,7 +50,7 @@ class registerPage(View):
             email = form.cleaned_data['email']
             studentNumber = form.cleaned_data['studentNumber']
 
-            return redirect('/accounts/login')
+            return redirect('login')
 
         context = {
             'form' : form
