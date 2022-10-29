@@ -27,8 +27,12 @@ class loginPage(View):
             userId = form.cleaned_data['userId']
             studentNumber = form.cleaned_data['studentNumber']
             password = form.cleaned_data['password']
-            print(password)
             user = authenticate(request, username=userId, password=password)
+        else:
+            userId = form.cleaned_data['userId']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=userId, password=password)
+            
 
         if user is not None:
             login(request, user)
