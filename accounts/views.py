@@ -3,6 +3,7 @@ from django.views import View
 from django.contrib.auth import authenticate, login, logout
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 from .models import PDFBaseUser
 from .form import RegisterForm,LoginForm
@@ -38,6 +39,7 @@ class loginPage(View):
             login(request, user)
             return redirect('/search/home')
         else:
+            messages.error(request, "Incorrect User ID or Password, please try again.")
             print('User is incorrect')
         context={
             'form' : form,
@@ -57,15 +59,20 @@ class registerPage(View):
     
     def post(self, request, *args, **kwargs):
         form = RegisterForm(request.POST)
-        if form.is_valid():
-            user = form.save()
+        if form.is_valid():            
             firstName = form.cleaned_data['firstName']
             lastName = form.cleaned_data['lastName']
             email = form.cleaned_data['email']
             studentNumber = form.cleaned_data['studentNumber']
 
-            return redirect('login')
-
+            try:
+                user = form.save()
+                messages.success(request, "Account has been created!")
+                return redirect('login')
+            except:
+                messages.error(request, "User already exists")
+                return redirect('login')
+            
         context = {
             'form' : form
         }

@@ -78,6 +78,11 @@
 							</form>
 						</div>
 					</div>
+					{% if messages %} {% for message in messages %}
+					<div class="loginMessages">
+						<p>{{message}}</p>
+					</div>
+					{% endfor %} {% endif %}
 					<div class="loginScreenBoxBottom">
 						<p>Don't have an account yet? <a href="{% url 'register' %}">Sign Up</a></p>
 						<a href="#">Forgot your password</a>

@@ -68,7 +68,6 @@ h4 {
 .loginScreenBoxDialog {
     background-color: white;
     width: 30em;
-    height: 30em;
     border-radius: 20px;
 }
 
@@ -128,6 +127,18 @@ h4 {
     transition: 1.25s;
     position: relative;
     height: 21em;
+}
+
+.loginMessages {
+    background-color: rgba(248, 215, 218, 1);
+    padding: 0.5em;
+    margin: 0.5em;
+    border-radius: 1em;
+    border-color: rgba(220, 53, 69, 1);
+    color: rgba(114, 28, 36,1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .facultyLoginContainer {
