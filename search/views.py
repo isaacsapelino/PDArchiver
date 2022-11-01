@@ -23,7 +23,7 @@ class homePage(ListView):
 @method_decorator(login_required, name='dispatch')
 class searchContextPage(DetailView):
     model = Thesis
-    
+
     def get_queryset(self):
         return Thesis.objects.all()
 
