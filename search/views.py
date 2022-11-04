@@ -12,13 +12,9 @@ from .models import Thesis
 @method_decorator(login_required, name='dispatch')
 class homePage(ListView):
     model = Thesis
-    
-    def get_queryset(self):
-        return Thesis.objects.all()
-
-    def get(self, request, *args, **kwargs):
-        context={}
-        return render(request, template_name='home.html', context=context)
+    queryset = Thesis.objects.all()
+    context_object_name = 'theses'
+    template_name='home.html'
 
 @method_decorator(login_required, name='dispatch')
 class searchContextPage(DetailView):

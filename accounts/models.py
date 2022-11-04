@@ -44,6 +44,9 @@ class PDFBaseUser(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return self.userId
 
+    def detailName(self):
+        return self.firstName + ' ' + self.lastName
+
 
 
 

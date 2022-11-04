@@ -84,53 +84,18 @@
                             <!-- list of researches -->
                             <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true" class="scrollspy-example-2" tabindex="0">
                                 <div class="list-group">
+                                    {% for thesis in theses %}
+                                    
                                     <a href="#" class="list-group-item list-group-item-action" >
                                     <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">List group item heading</h5>
-                                        <small>1 days ago</small>
+                                        <h5 class="mb-1">{{thesis.title}}</h5>
+                                        <small>{{thesis.whenpublished}}</small>
                                     </div>
-                                    <p class="mb-1">Some placeholder content in a paragraph.</p>
-                                    <small>And some small print.</small>
-                                    </a>
-                                    <a href="#" class="list-group-item list-group-item-action">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">List group item heading</h5>
-                                        <small class="text-muted">3 days ago</small>
-                                    </div>
-                                    <p class="mb-1">Some placeholder content in a paragraph.</p>
-                                    <small class="text-muted">And some muted small print.</small>
-                                    </a>
-                                    <a href="#" class="list-group-item list-group-item-action">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">List group item heading</h5>
-                                        <small class="text-muted">3 days ago</small>
-                                    </div>
-                                    <p class="mb-1">Some placeholder content in a paragraph.</p>
-                                    <small class="text-muted">And some muted small print.</small>
-                                    </a>
-                                    <a href="#" class="list-group-item list-group-item-action" >
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">List group item heading</h5>
-                                        <small>2 days ago</small>
-                                    </div>
-                                        <p class="mb-1">Some placeholder content in a paragraph.</p>
-                                        <small>And some small print.</small>
-                                    </a>
-                                    <a href="#" class="list-group-item list-group-item-action">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">List group item heading</h5>
-                                        <small class="text-muted">3 days ago</small>
-                                    </div>
-                                        <p class="mb-1">Some placeholder content in a paragraph.</p>
-                                        <small class="text-muted">And some muted small print.</small>
-                                    </a>
-                                    <a href="#" class="list-group-item list-group-item-action">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">List group item heading</h5>
-                                        <small class="text-muted">3 days ago</small>
-                                    </div>
-                                        <p class="mb-1">Some placeholder content in a paragraph.</p>
-                                        <small class="text-muted">And some muted small print.</small>
+                                    <p class="mb-1">{{thesis.abstract}}</p>
+                                        {% for authors in thesis.authors.all %}
+                                            <small>{{authors.detailName}}</small>
+                                        {% endfor %}
+                                    {% endfor %}
                                     </a>
                                 </div>
                             </div>
