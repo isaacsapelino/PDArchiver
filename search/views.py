@@ -27,3 +27,11 @@ class searchContextPage(DetailView):
         context={}
         return render(request, template_name='home.html', context=context)
 
+@method_decorator(login_required, name='dispatch')
+class uploadPage(DetailView):
+
+    def get(self, request, *args, **kwargs):
+        context={}
+        return render(request, template_name='upload.html', context=context)
+        
+
