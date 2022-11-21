@@ -25,7 +25,7 @@
         <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     </head>
     <!-- contains the actual content of the HTML
     file that are visible in the web browser. -->
@@ -38,12 +38,14 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="topnav-right">
-                        <a href="{% url 'upload' %}"><i class="fa fa-upload" style="font-size:20px" ></i>  UPLOAD </a>
-                        
-                        <a href="#"><i class="fa fa-fw fa-user" style="font-size:20px" ></i> PROFILE </a>
-                         
-                    </div>
+                <div class="topnav-right">
+                    <a href="#"><i class="fa fa-fw fa-user" style="font-size:20px" ></i> PROFILE &nbsp</a>
+                    <a href="{% url 'logout' %}"><i class="fa fa-sign-out" style="font-size:20px" > </i>LOGOUT  &nbsp</a>
+            </div>
+                <div class="topnav-left">
+                     <a href="{% url 'upload' %}"><i class="fa fa-upload" style="font-size:20px" ></i>  UPLOAD  &nbsp</a>  
+                </div>
+                   
 
               </div>
         </nav>
@@ -52,7 +54,7 @@
         <div class="container-fluid">
             <!-- Start of landing -->
             <section class="jumbotron text-center my-1" id="search">
-                <h1><b> PROJECT DESIGN DOCUMENTS <br> COMPUTER ENGINEERING DEPARTMENT </b></h1>
+                <h1><b> PROJECT DESIGN DOCUMENTS <br> COMPUTER ENGINEERING DEPARTMENT  </b></h1>
              
                 <div class="container-fluid col-6">
                     <!-- Search -->

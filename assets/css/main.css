@@ -271,5 +271,9 @@ h4 {
 .topnav-right {
     float: right;
   }
+  
+.topnav-left {
+    float: left;
+}
 
 /*END OF HOME SEARCH PAGE*/
