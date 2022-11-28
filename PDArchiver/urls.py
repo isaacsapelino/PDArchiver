@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from search.views import searchContextPage
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('accounts.urls')),
     path('search/', include('search.urls')),
+    path('', searchContextPage.as_view(), name='searchContext'),
 ]
