@@ -1,279 +1,358 @@
 /* LOGIN PAGE CSS */
 
 * {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .loginPage {
-    background-image: url("/static/img/loginBG.svg"), url("/static/img/greenbg.jpg");
-    background-repeat: no-repeat, no-repeat;
-    background-size: auto, cover;
-    height: 100vh;
+  background-image: url("/static/img/loginBG.svg"),
+    url("/static/img/greenbg.jpg");
+  background-repeat: no-repeat, no-repeat;
+  background-size: auto, cover;
+  height: 100vh;
 }
 
 .loginPageWrapper {
-    padding: 3em;
+  padding: 3em;
 }
 
 .loginPageWrapperHeader {
-    padding-left: 5em;
-    
+  padding-left: 5em;
 }
 
 h4 {
-    font-family: 'Now', sans-serif !important;
-    font-weight: 700;
-    font-size: 25pt;
-    color: white;
+  font-family: "Now", sans-serif !important;
+  font-weight: 700;
+  font-size: 25pt;
+  color: white;
 }
 
 .loginMainScreen {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
-.loginPageImage{
-    position: relative;
-    width: 50em;
-    padding-left: 8em;
+.loginPageImage {
+  position: relative;
+  width: 50em;
+  padding-left: 8em;
 }
 
 .loginPageImage img {
-    width: 34em;
+  width: 34em;
 }
 
-.loginPageScreen{
-    background-color: green;
+.loginPageScreen {
+  background-color: green;
 }
 
 /* LOGIN PAGE SCREEN DIALOG */
 
 .loginScreenBox {
-    padding-left: 3em;
+  padding-left: 3em;
 }
 
 .loginScreenBox .row {
-    margin-bottom: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 .loginScreenBox form {
-    padding-top: 1em;
-    padding-left: 2em;
-    padding-right: 2em;
-    font-family: 'Now', sans-serif;
-    font-size: 13pt;
+  padding-top: 1em;
+  padding-left: 2em;
+  padding-right: 2em;
+  font-family: "Now", sans-serif;
+  font-size: 13pt;
 }
 
 .loginScreenBoxDialog {
-    background-color: white;
-    width: 30em;
-    border-radius: 20px;
+  background-color: white;
+  width: 30em;
+  border-radius: 20px;
 }
 
 .loginDialogHeaderGrid {
-    display: grid;
-    background-color: #d9d9d9;
-    grid-template-columns: auto auto;
-    border-radius: 15px 15px 0 0;
+  display: grid;
+  background-color: #d9d9d9;
+  grid-template-columns: auto auto;
+  border-radius: 15px 15px 0 0;
 }
 
 .loginDialogGridItem {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.75em;
-    font-family: 'Now', sans-serif !important;
-    font-weight: 700;
-    font-size: 14pt;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75em;
+  font-family: "Now", sans-serif !important;
+  font-weight: 700;
+  font-size: 14pt;
 }
 
 .loginScreenBoxBottom {
-    padding: 1em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .loginDialogLabel {
-    font-family: 'Now', sans-serif !important;
-    font-weight: 700;
-    font-size: 14pt !important;
-    color: black !important;
+  font-family: "Now", sans-serif !important;
+  font-weight: 700;
+  font-size: 14pt !important;
+  color: black !important;
 }
 
 .loginBtn {
-    border-radius: 5px;
-    font-family: 'Now', sans-serif !important;
-    font-weight: 700;
-    font-size: 13pt !important;
-    text-transform: capitalize !important;
+  border-radius: 5px;
+  font-family: "Now", sans-serif !important;
+  font-weight: 700;
+  font-size: 13pt !important;
+  text-transform: capitalize !important;
 }
 
-.input-field input[type=text]:focus,
-.input-field input[type=password]:focus,
-.input-field input[type=text].valid,
-.input-field input[type=password].valid {
-    border-bottom: 1px solid #000 !important;
-    box-shadow: 0 1px 0 0 #000 !important;
+.input-field input[type="text"]:focus,
+.input-field input[type="password"]:focus,
+.input-field input[type="text"].valid,
+.input-field input[type="password"].valid {
+  border-bottom: 1px solid #000 !important;
+  box-shadow: 0 1px 0 0 #000 !important;
 }
-
 
 .loginContainerHandler {
-    display: flex;
-    align-items: center;
-    overflow:hidden;
-    transition: 1.25s;
-    position: relative;
-    height: 21em;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  transition: 1.25s;
+  position: relative;
+  height: 21em;
 }
 
 .loginMessages {
-    background-color: rgba(248, 215, 218, 1);
-    padding: 0.5em;
-    margin: 0.5em;
-    border-radius: 1em;
-    border-color: rgba(220, 53, 69, 1);
-    color: rgba(114, 28, 36,1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background-color: rgba(248, 215, 218, 1);
+  padding: 0.5em;
+  margin: 0.5em;
+  border-radius: 1em;
+  border-color: rgba(220, 53, 69, 1);
+  color: rgba(114, 28, 36, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .facultyLoginContainer {
-    position: absolute;
-    padding-top: 3em;
-    width: 100%;
-    height: 100%;
-    background-color: white;
+  position: absolute;
+  padding-top: 3em;
+  width: 100%;
+  height: 100%;
+  background-color: white;
 }
 
 .studentLoginContainer {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 100;
-    background-color: white;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background-color: white;
 }
 
 .isHidden {
-    visibility: hidden;
-    opacity: 0;
-    position:absolute;
-    transition: 1s;
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  transition: 1s;
 }
 
 .show {
-    visibility: visible;
-    opacity: 1;
-    transition: 1s;
+  visibility: visible;
+  opacity: 1;
+  transition: 1s;
 }
 
 .loginSwitchLinks {
-    color: black;
-    text-decoration: none;
+  color: black;
+  text-decoration: none;
 }
 
 .isSelected {
-    text-decoration: underline !important;
+  text-decoration: underline !important;
 }
-
 
 /* END OF LOGIN PAGE */
 /* REGISTER PAGE CSS */
 .registerPage {
-    background-color: #2d9817;
-    height: 100vh;
+  background-color: #2d9817;
+  height: 100vh;
 }
 
 .registerPageWrapperHeader {
-    display: flex;
-    width: 100%;
-    background-color: #1d4214;
-    padding-left: 3em;
+  display: flex;
+  width: 100%;
+  background-color: #1d4214;
+  padding-left: 3em;
 }
 
 .registerPageWrapper h4 {
-    font-size: 15pt;
+  font-size: 15pt;
 }
 
 .registerPageWrapperMainScreen {
-    display: flex;
-    flex-direction: column;
-    padding-left: 3em;
-    padding-right: 3em;
-    padding-bottom: 3em;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 3em;
+  padding-right: 3em;
+  padding-bottom: 3em;
+  height: 100%;
 }
 
 .registerPageWrapperTitle {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    width: 100%;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .registerPageWrapperTitle h4 {
-    font-size: 20pt;
+  font-size: 20pt;
 }
 
 .registerPageWrapperDialog {
-    background-color: white;
-    margin-top: 1em;
-    width: 100%;
-    height: 35em;
-    padding: 3em;
-    border-radius: 3em;
+  background-color: white;
+  margin-top: 1em;
+  width: 100%;
+  height: 35em;
+  padding: 3em;
+  border-radius: 3em;
 }
 
 .registerDialogLabel {
-    font-family: 'Now', sans-serif !important;
-    font-weight: 700;
-    font-size: 16pt !important;
-    color: black !important;
+  font-family: "Now", sans-serif !important;
+  font-weight: 700;
+  font-size: 16pt !important;
+  color: black !important;
 }
 
 .registerMainScreenBottom {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .registerPasswordToolTip {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 .registerPasswordToolTip .registerPasswordToolTipText {
-    visibility: hidden;
-    position:absolute;
-    left: 7em;
-    top: 3.3em;
-    border-radius: 1em;
-    z-index: 1;
-    background-color: #251B37;
-    color: white;
-    padding: 0.5em;
-    width: 32em;
+  visibility: hidden;
+  position: absolute;
+  left: 7em;
+  top: 3.3em;
+  border-radius: 1em;
+  z-index: 1;
+  background-color: #251b37;
+  color: white;
+  padding: 0.5em;
+  width: 32em;
 }
 
 .registerPasswordToolTip:hover .registerPasswordToolTipText {
-    visibility: visible;
+  visibility: visible;
 }
 
 /*END OF REGISTER PAGE*/
 /* HOME SEARCH PAGE CSS */
 .homePage {
-    background-color: #2d9817;
-    height: 138vh;
+    background: #b6e388;
+    
+  height: 138vh;
 }
+
 .topnav-right {
-    float: right;
-  }
-  
+  float: right;
+}
+
 .topnav-left {
-    float: left;
+  float: left;
 }
 
 /*END OF HOME SEARCH PAGE*/
+
+
+/*UPLOAD PAGE*/
+
+.uploadPage {
+    background: #064420;
+    font-weight: bold;
+    color: #fefefe;
+    font-family: 'Poppins', sans-serif;
+    height: 100%;
+}
+
+{
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid black;
+  background-color: #f8f7ee;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #f8f7ee;
+  color: black;
+  font-weight: bold;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+  
+}
+
+
+/*END UPLOAD PAGE*/
