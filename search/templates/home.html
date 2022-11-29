@@ -21,8 +21,6 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap" rel="stylesheet">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-        <!-- external css -->
-        <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -58,10 +56,11 @@
              
                 <div class="container-fluid col-6">
                     <!-- Search -->
-                    <form class="d-flex" role="search">
+                    <form id="search_form" class="d-flex" role="search" method="POST">
                         {% csrf_token %}
-                        <input id="search_res" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+                        {{form}}
+                        {% comment %} <input id="search_res" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">{% endcomment %}
+                        <button class="btn btn-outline-success" type="submit">Search</button> 
                     </form>
                 </div>
                 
@@ -87,7 +86,12 @@
                         <div class="p-3 border col-8 bg-light">
                             <!-- list of researches -->
                             <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true" class="scrollspy-example-2" tabindex="0">
+
+                                <div id="result_box_search" class="list-group hideContext">
+                                </div>
+
                                 <div id="result_box" class="list-group">
+
                                     {% for thesis in theses %}
                                     
                                     <a href="#" class="list-group-item list-group-item-action" >
@@ -120,47 +124,69 @@
 {% endblock %}
 {% block script %}
 <script>
-    let filteredArray = [];
-    const data = "{{qs_json}}";
-    const clean_data = JSON.parse(data.replace(/&quot;/g, '"'));
-    console.log(clean_data)
-
-    const search_box = document.querySelector('#search_res');
     const result_box = document.querySelector('#result_box');
+    const result_box_search = document.querySelector("#result_box_search");
 
-    search_box.addEventListener('keyup', (e) => {
+    const sendSearchData = (thesis) => {
+
+        $.ajax ({
+            type: 'POST',
+            url: '{% url 'search' %}',
+            data : {
+                'thesis': thesis
+            },
+            headers: {"X-CSRFToken" : csrf_token},
+
+            success : (res) => {
+                const data = res.data;
+                console.log(data)
+                if(Array.isArray(data)) {
+                    data.forEach(thesis => {
+                        result_box_search.innerHTML += `
+                            <a href="#" class="list-group-item list-group-item-action" >
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">${thesis.title}</h5>
+                                <small>${thesis.whenpublished}</small>
+                            </div>
+                            <p class="mb-1">${thesis.abstract}</p>
+                            ${thesis.authors.map((e) => `<small>${e.fullName}</small>`)}
+                        `
+                            
+                    })
+                } else {
+                    if(search_input.value.length > 0) {
+                        result_box_search.innerHTML = `<b>${data}</b>`;
+                    } else {
+                        result_box_search.classList.add('hideContext');
+                    }
+                }
+            },
+            err : (err) => {
+                console.log(err);
+            }
+        })
+    }
+    
+    const search_form = document.querySelector('#search_form');
+    const search_field = document.querySelector('[name="searchField"]');
+    const csrf_token = document.querySelector('[name="csrfmiddlewaretoken"]').value;
+    
+
+    search_field.addEventListener('keyup', (e) => {
+        result_box_search.innerHTML = "";
         result_box.innerHTML = "";
-        filteredArray = clean_data.filter(info => info['title'].includes(e.target.value));
-        console.log(filteredArray);
-        if(filteredArray.length > 0) {
-            filteredArray.map(info => {
-                result_box.innerHTML += `
-                <a href="#" class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">${info['title']}</h5>
-                        <small>${info['date_submitted']}</small>
-                    </div>
-                    <p class="mb-1">${info['abstract']}</p>
-                </a><br />`;
-            })
+
+        sendSearchData(e.target.value);  
+        
+        if(result_box_search.contains('hideContext')) {
+            result_box_search.classList.remove('hideContext');
+            result_box.classList.add('hideContext');
         } else {
-            result_box.innerHTML = `
-            {% for thesis in theses %}
-                                    
-            <a href="#" class="list-group-item list-group-item-action" >
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">{{thesis.title}}</h5>
-                <small>{{thesis.whenpublished}}</small>
-            </div>
-            <p class="mb-1">{{thesis.abstract}}</p>
-                {% for authors in thesis.authors.all %}
-                    <small>{{authors.detailName}}</small>
-                {% endfor %}
-            {% endfor %}
-            
-            `
+            result_box_search.classList.add('hideContext');
+            result_box.classList.remove('hideContext');
         }
     })
+    
     
 </script>
 {% endblock %}

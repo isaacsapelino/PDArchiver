@@ -10,6 +10,8 @@ import math
 import json
 import datetime
 
+from .form import searchForm
+
 from .models import Thesis
 
 # Create your views here.
@@ -18,11 +20,42 @@ from .models import Thesis
 class homePage(ListView):
     model = Thesis
     queryset = Thesis.objects.all()
-    context_object_name = 'theses'
     
-    template_name='home.html'
+    form_class = searchForm
 
-    def datetime_handler(self, date):
+    def get(self, request, *args, **kwargs):
+        context = {
+            'form' : self.form_class,
+            'theses' : Thesis.objects.all(),
+        }
+
+        return render(request, template_name='home.html', context=context)
+
+    def post(self, request, *args, **kwargs):
+        if self.request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            form_field = request.POST
+            print(request.POST['thesis'])
+            thesis_query = Thesis.objects.filter(title__icontains=form_field['thesis'])
+
+            if len(thesis_query) > 0 and len(form_field) > 0:
+                data = []
+                for pos in thesis_query:
+                    item = {
+                        'id' : pos.id,
+                        'title' : pos.title,
+                        'abstract' : pos.abstract,
+                        'authors' : [res.as_dict() for res in pos.authors.all()],
+                        'whenpublished' : pos.whenpublished(),
+                    }
+                    data.append(item)
+                res = data
+            else:
+                res = 'No result found.'
+            return JsonResponse({'data' : res}, status=200)
+        return JsonResponse({}, status=400)
+            
+
+    """   def datetime_handler(self, date):
         if isinstance(date, datetime.datetime):
             now = timezone.now()
             diff = now - date
@@ -89,7 +122,8 @@ class homePage(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["qs_json"] = json.dumps(list(Thesis.objects.values()), default=self.datetime_handler)
-        return context
+        return context """
+
 
 @method_decorator(login_required, name='dispatch')
 class searchContextPage(ListView):
@@ -101,6 +135,8 @@ class searchContextPage(ListView):
     def get(self, request, *args, **kwargs):
         context={}
         return render(request, template_name='home.html', context=context)
+
+
 
 @method_decorator(login_required, name='dispatch')
 class uploadPage(DetailView):

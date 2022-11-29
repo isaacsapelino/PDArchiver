@@ -47,6 +47,13 @@ class PDFBaseUser(AbstractBaseUser, PermissionsMixin):
     def detailName(self):
         return self.firstName + ' ' + self.lastName
 
+    def as_dict(self):
+        context = {
+            'id' : self.id,
+            'fullName' : self.firstName + ' ' + self.lastName,
+        }
+        return context
+
 
 
 
