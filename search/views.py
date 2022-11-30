@@ -34,7 +34,6 @@ class homePage(ListView):
     def post(self, request, *args, **kwargs):
         if self.request.headers.get('x-requested-with') == 'XMLHttpRequest':
             form_field = request.POST
-            print(request.POST['thesis'])
             thesis_query = Thesis.objects.filter(title__icontains=form_field['thesis'])
 
             if len(thesis_query) > 0 and len(form_field) > 0:
@@ -53,77 +52,6 @@ class homePage(ListView):
                 res = 'No result found.'
             return JsonResponse({'data' : res}, status=200)
         return JsonResponse({}, status=400)
-            
-
-    """   def datetime_handler(self, date):
-        if isinstance(date, datetime.datetime):
-            now = timezone.now()
-            diff = now - date
-            if diff.days == 0 and diff.seconds >= 0 and diff.seconds < 60:
-                seconds= diff.seconds
-                
-                if seconds == 1:
-                    return str(seconds) +  "second ago"
-                
-                else:
-                    return str(seconds) + " seconds ago"
-
-            if diff.days == 0 and diff.seconds >= 60 and diff.seconds < 3600:
-                minutes= math.floor(diff.seconds/60)
-
-                if minutes == 1:
-                    return str(minutes) + " minute ago"
-                
-                else:
-                    return str(minutes) + " minutes ago"
-
-
-
-            if diff.days == 0 and diff.seconds >= 3600 and diff.seconds < 86400:
-                hours= math.floor(diff.seconds/3600)
-
-                if hours == 1:
-                    return str(hours) + " hour ago"
-
-                else:
-                    return str(hours) + " hours ago"
-
-            # 1 day to 30 days
-            if diff.days >= 1 and diff.days < 30:
-                days= diff.days
-            
-                if days == 1:
-                    return str(days) + " day ago"
-
-                else:
-                    return str(days) + " days ago"
-
-            if diff.days >= 30 and diff.days < 365:
-                months= math.floor(diff.days/30)
-                
-
-                if months == 1:
-                    return str(months) + " month ago"
-
-                else:
-                    return str(months) + " months ago"
-
-
-            if diff.days >= 365:
-                years= math.floor(diff.days/365)
-
-                if years == 1:
-                    return str(years) + " year ago"
-
-                else:
-                    return str(years) + " years ago"
-            return date.__str__()
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["qs_json"] = json.dumps(list(Thesis.objects.values()), default=self.datetime_handler)
-        return context """
-
 
 @method_decorator(login_required, name='dispatch')
 class searchContextPage(ListView):
