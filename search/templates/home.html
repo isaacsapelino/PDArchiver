@@ -174,7 +174,6 @@
     search_field.addEventListener('keyup', (e) => {
         result_box_search.innerHTML = "";
         result_box.innerHTML = "";
-
         sendSearchData(e.target.value);  
         
         if(result_box_search.contains('hideContext')) {

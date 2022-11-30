@@ -79,6 +79,17 @@ class registerPage(View):
 
         return render(request, template_name='registerPage.html', context=context)
 
+class profilePage(View):
+
+    def get(self, request, *args, **kwargs):
+
+        context = {
+            
+        }
+
+        return render (request,template_name='profilePage.html', context=context)
+
+
 @login_required(login_url='/')
 def logoutUser(request):
     logout(request)
