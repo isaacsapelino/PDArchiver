@@ -86,8 +86,6 @@
                             <!-- list of researches -->
                             <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true" class="scrollspy-example-2" tabindex="0">
 
-                                <div id="result_box_search" class="list-group hideContext">
-                                </div>
 
                                 <div id="result_box" class="list-group">
 
@@ -124,7 +122,6 @@
 {% block script %}
 <script>
     const result_box = document.querySelector('#result_box');
-    const result_box_search = document.querySelector("#result_box_search");
 
     const sendSearchData = (thesis) => {
 
@@ -141,7 +138,7 @@
                 console.log(data)
                 if(Array.isArray(data)) {
                     data.forEach(thesis => {
-                        result_box_search.innerHTML += `
+                        result_box.innerHTML += `
                             <a href="#" class="list-group-item list-group-item-action" >
                             <div class="d-flex w-100 justify-content-between">
                                 <h5 class="mb-1">${thesis.title}</h5>
@@ -154,9 +151,21 @@
                     })
                 } else {
                     if(search_input.value.length > 0) {
-                        result_box_search.innerHTML = `<b>${data}</b>`;
+                        result_box.innerHTML = `<b>${data}</b>`;
                     } else {
-                        result_box_search.classList.add('hideContext');
+                        result_box.innerHTML = `
+                        {% for thesis in theses %}
+                                    
+                                    <a href="#" class="list-group-item list-group-item-action" >
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">{{thesis.title}}</h5>
+                                        <small>{{thesis.whenpublished}}</small>
+                                    </div>
+                                    <p class="mb-1">{{thesis.abstract}}</p>
+                                        {% for authors in thesis.authors.all %}
+                                            <small>{{authors.detailName}}</small>
+                                        {% endfor %}
+                                    {% endfor %}`
                     }
                 }
             },
@@ -172,17 +181,14 @@
     
 
     search_field.addEventListener('keyup', (e) => {
-        result_box_search.innerHTML = "";
+
         result_box.innerHTML = "";
+
+      
+
         sendSearchData(e.target.value);  
         
-        if(result_box_search.contains('hideContext')) {
-            result_box_search.classList.remove('hideContext');
-            result_box.classList.add('hideContext');
-        } else {
-            result_box_search.classList.add('hideContext');
-            result_box.classList.remove('hideContext');
-        }
+        
     })
     
     
