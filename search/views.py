@@ -10,7 +10,7 @@ import math
 import json
 import datetime
 
-from .form import searchForm
+from .form import searchForm, uploadThesisForm
 
 from .models import Thesis
 
@@ -69,8 +69,35 @@ class searchContextPage(ListView):
 @method_decorator(login_required, name='dispatch')
 class uploadPage(DetailView):
 
+    form = uploadThesisForm
+
     def get(self, request, *args, **kwargs):
-        context={}
+        context={
+            'form' : self.form,
+        }
         return render(request, template_name='upload.html', context=context)
+
+    def post(self,request,*args, **kwargs):
+        form = uploadThesisForm(request.POST, request.FILES)
+        if form.is_valid():
+            authors = form.cleaned_data['authors']
+            instance = form.save()
+            for author in authors:
+                instance.authors.add(author)
+            instance.save()
+
+            
+        else:
+            form = uploadThesisForm()
+            print('Failed')
+
+        context = {
+            'form' : self.form,
+        }
+        return render(request, template_name='upload.html', context=context)
+
+        
+
+
         
 
