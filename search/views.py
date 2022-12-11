@@ -69,6 +69,8 @@ class searchContextPage(ListView):
 @method_decorator(login_required, name='dispatch')
 class uploadPage(DetailView):
 
+    tag_list = []
+
     form = uploadThesisForm
 
     def get(self, request, *args, **kwargs):
@@ -79,29 +81,38 @@ class uploadPage(DetailView):
 
     def post(self,request,*args, **kwargs):
         form = uploadThesisForm(request.POST, request.FILES)
-
+        print(request.POST)
+        
         if form.is_valid():
-            authors = form.cleaned_data['authors']
             instance = form.save()
+            authors = form.cleaned_data['authors']
+            tags = form.cleaned_data['tags']
             for author in authors:
-                instance.authors.add(author)
-            
-            if self.request.headers.get('x-requested-with') == 'XMLHttpRequest':
-                tags_query = request.POST
-                tags = dict(tags_query)
-                tag_list = []
-                for value in tags.values():
-                    tag_list = value
+                instance.authors.add(author)            
 
-                for v in tag_list:
-                    print(v)
+            instance.tags.clear()
             
+            chars_to_remove = [',',':','[','{',']','}','value']
+
+            temp_tags = ' '.join(tags)
+
+            for i in chars_to_remove:
+                temp_tags = temp_tags.replace(i, '')
+            
+            tags = temp_tags.split()
+
+            print(tags)
+
+            for value in tags:
+                print(value)
+                instance.tags.add(value)
+                    
             instance.save()
             
         else:
             form = uploadThesisForm()
             print('Failed')
-
+ 
         context = {
             'form' : self.form,
         }

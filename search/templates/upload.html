@@ -69,42 +69,53 @@
       {{ form.as_p }}
       <ul id="tagsList">
       </ul>
-      <button type="submit" onclick=sendTagList(tagsInputWithSearch.getTags())>Submit</button>
+      <button type="submit">Submit</button>
     </form>
+    
 
 </body>
 {% endblock %}
 {% block script %}
-<script>
+<script type="text/javascript">
   M.AutoInit();
 
-  const sendTagList = (tags) => {
-    $.ajax ({
-      type: 'POST',
-      url : '{% url 'upload' %}',
-      data : {
-        'tags' : tags,
-      },
-      headers: {"X-CSRFToken" : csrf_token},
-      success : (res) => {
+  const taggableList = ["Agriculture",
+    "Artificial Intelligence",
+    "Medical Technology",
+    "Deep Learning",
+    "Education",
+    "Environment",
+    "Machine Learning"
+  ]
 
-      },
-      error : (res) => {
+  const inputTag = document.querySelector('[name=tags]');
+  tagify = new Tagify(inputTag, {
+    duplicates: false,
+    placeholder: 'Enter your tags for your thesis.',
+    autoComplete: {
+      enabled: true,
+      rightKey: false
+    },
+    whitelist: [
+      'Deep Learning',
+      'Agriculture',
+      'Machine Learning',
+      'Medical Technology',
+      'Education',
+      'Environment',
+      'Artificial Intelligence',
+    ],
+    enforceWhitelist: true,
+    maxTags: 7,
+    dropdown: {
+      maxItems: 7,
+      className: "tags-look",
+      closeOnSelect: false,
+      enabled : 0,
+    }
+  })
 
-      },
-    })
-  }
-  const csrf_token = document.querySelector('[name="csrfmiddlewaretoken"]').value;
-
-  const tagsInputWithSearch = new simpleTagsInput({
-    inputEl : "id_tags",
-    listEl : "tagsList",
-    autocompleteSearchList: [
-      "Agriculture",
-      "Artificial Intelligence",
-      "System Administration",
-    ]
-  });
+ 
 
 
 </script>

@@ -13,8 +13,9 @@
 		/>
 
 		<link href="{% static 'css/main.css' %}" rel="stylesheet" />
+		<link href="{% static 'css/tagify.css' %}" rel="stylesheet" />
 		<link href="http://fonts.cdnfonts.com/css/now" rel="stylesheet" />
-		<link href="{% static 'css/simple-tag-input.css' %}" rel="stylesheet" />
+
 		<title>{% block title %}{% endblock %}</title>
 	</head>
 	<body>
@@ -33,6 +34,6 @@
 		crossorigin="anonymous"
 	></script>
 	<script src="{% static 'js/login.js' %}"></script>
-	<script src="{% static 'js/simple-tag-input.js' %}"></script>
+	<script src="{% static 'js/jQuery.tagify.min.js' %}"></script>
 	{% block script %} {% endblock %}
 </html>
