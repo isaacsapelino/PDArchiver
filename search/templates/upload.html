@@ -67,7 +67,9 @@
     <form action="#" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{ form.as_p }}
-      <button type="submit">Submit</button>
+      <ul id="tagsList">
+      </ul>
+      <button type="submit" onclick=sendTagList(tagsInputWithSearch.getTags())>Submit</button>
     </form>
 
 </body>
@@ -75,5 +77,35 @@
 {% block script %}
 <script>
   M.AutoInit();
+
+  const sendTagList = (tags) => {
+    $.ajax ({
+      type: 'POST',
+      url : '{% url 'upload' %}',
+      data : {
+        'tags' : tags,
+      },
+      headers: {"X-CSRFToken" : csrf_token},
+      success : (res) => {
+
+      },
+      error : (res) => {
+
+      },
+    })
+  }
+  const csrf_token = document.querySelector('[name="csrfmiddlewaretoken"]').value;
+
+  const tagsInputWithSearch = new simpleTagsInput({
+    inputEl : "id_tags",
+    listEl : "tagsList",
+    autocompleteSearchList: [
+      "Agriculture",
+      "Artificial Intelligence",
+      "System Administration",
+    ]
+  });
+
+
 </script>
 {% endblock %}

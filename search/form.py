@@ -18,7 +18,11 @@ class uploadThesisForm(ModelForm):
     abstract = forms.CharField(label='Abstract', required=True, max_length=255, widget=forms.Textarea(attrs={
         'class': 'form-control me-2', }))
     authors = forms.ModelMultipleChoiceField(queryset=PDFBaseUser.objects.all())
-    year = forms.DateField(initial=datetime.date.today)
+    tags = forms.CharField(label="Tags", max_length=100, widget=forms.TextInput(attrs={
+        'class' : 'form-control me-2',
+        'spellcheck' : 'false',
+    }))
+    year = forms.DateField(initial=datetime.date.today)    
     document = forms.FileField()
 
     class Meta:
