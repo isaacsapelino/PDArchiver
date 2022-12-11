@@ -79,11 +79,23 @@ class uploadPage(DetailView):
 
     def post(self,request,*args, **kwargs):
         form = uploadThesisForm(request.POST, request.FILES)
+
         if form.is_valid():
             authors = form.cleaned_data['authors']
             instance = form.save()
             for author in authors:
                 instance.authors.add(author)
+            
+            if self.request.headers.get('x-requested-with') == 'XMLHttpRequest':
+                tags_query = request.POST
+                tags = dict(tags_query)
+                tag_list = []
+                for value in tags.values():
+                    tag_list = value
+
+                for v in tag_list:
+                    print(v)
+            
             instance.save()
             
         else:
