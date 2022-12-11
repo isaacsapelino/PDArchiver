@@ -126,6 +126,7 @@ STATICFILES_DIRS = [
     Path(BASE_DIR, 'assets')
 ]
 
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
@@ -135,3 +136,5 @@ AUTH_USER_MODEL = 'accounts.PDFBaseUser'
 AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend']
 
 LOGIN_URL='/'
+
+TAGGIT_CASE_INSENSITIVE = True

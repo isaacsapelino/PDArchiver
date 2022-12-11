@@ -4,9 +4,11 @@ from accounts.models import PDFBaseUser
 from django.utils import timezone
 import datetime
 import math
+from django.core.files.storage import FileSystemStorage
 
 # Create your models here.
 
+fs = FileSystemStorage(location='/media')
 
 class Tag(models.Model):
     title = models.CharField(max_length=100)
@@ -19,6 +21,8 @@ class Thesis(models.Model):
     date_submitted = models.DateTimeField(auto_now_add=True)
     abstract = models.CharField(max_length=255)
     authors = models.ManyToManyField(PDFBaseUser)
+    year = models.DateField(default=datetime.date.today)
+    document = models.FileField(storage=fs)
     tags = TaggableManager()
 
     def __str__(self):
