@@ -6,10 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.http import JsonResponse
 from django.utils import timezone
-from django.core.files.storage import FileSystemStorage
-import math
-import json
-import datetime
+
+from django.core.paginator import Paginator
 
 from .form import searchForm, uploadThesisForm
 
@@ -20,14 +18,18 @@ from .models import Thesis
 @method_decorator(login_required, name='dispatch')
 class homePage(ListView):
     model = Thesis
+    paginate_by = 2
     queryset = Thesis.objects.all()
     
     form_class = searchForm
 
     def get(self, request, *args, **kwargs):
+
+        thesis = Thesis.objects.all()
+
         context = {
             'form' : self.form_class,
-            'theses' : Thesis.objects.all(),
+            'thesis' : thesis,
         }
 
         return render(request, template_name='home.html', context=context)
@@ -46,6 +48,7 @@ class homePage(ListView):
                         'abstract' : pos.abstract,
                         'authors' : [res.as_dict() for res in pos.authors.all()],
                         'tags' : [str(res) for res in pos.tags.all()],
+                        'slug' : pos.slug,
                         'whenpublished' : pos.whenpublished(),
                     }
                     data.append(item)
@@ -121,6 +124,16 @@ class uploadPage(DetailView):
             'form' : self.form,
         }
         return render(request, template_name='upload.html', context=context)
+
+@method_decorator(login_required, name='dispatch')
+class abstractPage(DetailView):
+    def get(self, request, *args, **kwargs):
+        context = {}
+        return render(request, template_name='abstract.html', context=context)
+
+    def post(self, request, *args, **kwargs):
+        context = {}
+        return render(request, template_name='abstract.html', context=context)
 
         
 

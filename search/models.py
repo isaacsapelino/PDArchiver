@@ -5,6 +5,8 @@ from django.utils import timezone
 import datetime
 import math
 from django.core.files.storage import FileSystemStorage
+from django.urls import reverse
+from django.template.defaultfilters import slugify
 
 # Create your models here.
 
@@ -23,6 +25,7 @@ class Thesis(models.Model):
     uploader = models.ForeignKey(PDFBaseUser, on_delete=models.CASCADE, related_name='Uploader', null=True)
     authors = models.ManyToManyField(PDFBaseUser, related_name='Authors')
     year = models.DateField(default=datetime.date.today)
+    slug = models.SlugField(null=True)
 
     def user_directory_path(instance, filename):
         return 'user_{0}_{1}'.format(instance.uploader.userId, filename)
@@ -31,8 +34,15 @@ class Thesis(models.Model):
     tags = TaggableManager()
 
     def __str__(self):
-        
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("thesis_detail", kwargs={"slug": self.slug})
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        return super().save(*args, **kwargs)
 
     def whenpublished(self):
         now = timezone.now()
