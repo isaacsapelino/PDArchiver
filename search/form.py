@@ -18,6 +18,7 @@ class uploadThesisForm(ModelForm):
         }))
     abstract = forms.CharField(label='Abstract', required=True, max_length=255, widget=forms.Textarea(attrs={
         'class': 'form-control me-2', }))
+    # uploader = forms.ModelChoiceField(queryset=PDFBaseUser.objects.all(), widget=forms.Select(attrs={'style' : 'visibility: hidden;'}))
     authors = forms.ModelMultipleChoiceField(queryset=PDFBaseUser.objects.all())
     tags = TagField()
     year = forms.DateField(initial=datetime.date.today)    
@@ -26,3 +27,7 @@ class uploadThesisForm(ModelForm):
     class Meta:
         model = Thesis
         fields = ['title', 'abstract', 'authors', 'year', 'tags', 'document']
+
+    # def __init__(self, name, *args, **kwargs):
+    #     super(uploadThesisForm, self).__init__(*args, **kwargs)
+    #     self.fields['uploader'].queryset

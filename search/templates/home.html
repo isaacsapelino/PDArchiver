@@ -99,13 +99,13 @@
                                     
                                     <a href="#" class="list-group-item list-group-item-action" >
                                     <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">{{thesis.title}}</h5>
+                                        <h5 class="mb-1" style="font-weight: bold;">{{thesis.title}}</h5>
                                         <small>{{thesis.whenpublished}}</small>
                                     </div>
                                     <p class="mb-1">{{thesis.abstract}}</p>
                                         {% for authors in thesis.authors.all %}
                                             <small>{{authors.detailName}},</small>
-                                        {% endfor %}
+                                        {% endfor %} <br />
                                         {% for tags in thesis.tags.all %}
                                             <small>{{tags.name}}</small>
                                     {% endfor %}
@@ -151,12 +151,13 @@
                         result_box.innerHTML += `
                             <a href="#" class="list-group-item list-group-item-action" >
                             <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">${thesis.title}</h5>
+                                <h5 class="mb-1" style="font-weight: bold;">${thesis.title}</h5>
                                 <small>${thesis.whenpublished}</small>
                             </div>
                             <p class="mb-1">${thesis.abstract}</p>
                             ${thesis.authors.map((e) => `<small>${e.fullName}</small>`)}
-                            ${thesis.tags.map((e) => `<small>${e.name}</small>`)}
+                            <br />
+                            ${thesis.tags.map((e) => `<small>${e}</small>`)}
                         `
                             
                     })

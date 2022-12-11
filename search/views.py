@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.http import JsonResponse
 from django.utils import timezone
+from django.core.files.storage import FileSystemStorage
 import math
 import json
 import datetime
@@ -44,6 +45,7 @@ class homePage(ListView):
                         'title' : pos.title,
                         'abstract' : pos.abstract,
                         'authors' : [res.as_dict() for res in pos.authors.all()],
+                        'tags' : [str(res) for res in pos.tags.all()],
                         'whenpublished' : pos.whenpublished(),
                     }
                     data.append(item)
@@ -81,17 +83,19 @@ class uploadPage(DetailView):
 
     def post(self,request,*args, **kwargs):
         form = uploadThesisForm(request.POST, request.FILES)
-        print(request.POST)
         
-        if form.is_valid():
-            instance = form.save()
+        if form.is_valid():            
+            instance = form.save(commit=False)
+            instance.uploader = request.user
+            instance.save()
             authors = form.cleaned_data['authors']
-            tags = form.cleaned_data['tags']
+            tags = form.cleaned_data['tags']          
+
             for author in authors:
                 instance.authors.add(author)            
 
             instance.tags.clear()
-            
+
             chars_to_remove = [',',':','[','{',']','}','value']
 
             temp_tags = ' '.join(tags)

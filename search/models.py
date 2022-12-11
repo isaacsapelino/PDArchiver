@@ -20,9 +20,14 @@ class Thesis(models.Model):
     title = models.CharField(max_length=255)
     date_submitted = models.DateTimeField(auto_now_add=True)
     abstract = models.CharField(max_length=255)
-    authors = models.ManyToManyField(PDFBaseUser)
+    uploader = models.ForeignKey(PDFBaseUser, on_delete=models.CASCADE, related_name='Uploader', null=True)
+    authors = models.ManyToManyField(PDFBaseUser, related_name='Authors')
     year = models.DateField(default=datetime.date.today)
-    document = models.FileField(storage=fs)
+
+    def user_directory_path(instance, filename):
+        return 'user_{0}_{1}'.format(instance.uploader.userId, filename)
+
+    document = models.FileField(upload_to=user_directory_path)
     tags = TaggableManager()
 
     def __str__(self):
