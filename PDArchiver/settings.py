@@ -136,3 +136,5 @@ AUTH_USER_MODEL = 'accounts.PDFBaseUser'
 AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend']
 
 LOGIN_URL='/'
+
+TAGGIT_CASE_INSENSITIVE = True

@@ -85,7 +85,6 @@ class uploadPage(DetailView):
             for author in authors:
                 instance.authors.add(author)
             instance.save()
-
             
         else:
             form = uploadThesisForm()
