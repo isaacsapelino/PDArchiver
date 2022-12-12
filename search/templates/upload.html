@@ -1,6 +1,43 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
+<<<<<<< HEAD
 
 <div class="uploadPage">
+=======
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap"
+    rel="stylesheet"
+/>
+<!-- Bootstrap CSS -->
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+    crossorigin="anonymous"
+/>
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+<link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+/>
+<link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+/>
+<link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+/>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+<link href="{% static 'css/upload.css' %}" rel="stylesheet" />
+<body>
+  
+<div class=uploadPage>
+>>>>>>> c0dc44025659d1cc36d4334eb05bb3935cd244e7
 <div class="return">
   <div class="row">
     <div class="col-25">
@@ -10,7 +47,10 @@
 
 
 <h2><center> UPLOAD PD DOCUMENT </center></h2>
+<<<<<<< HEAD
 
+=======
+>>>>>>> c0dc44025659d1cc36d4334eb05bb3935cd244e7
     <form action="#" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{ form.as_p }}

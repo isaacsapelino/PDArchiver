@@ -4,6 +4,43 @@
 
 {% block content %}
 
+<!---HOME PAGE CSS DECLARATION -->
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap"
+    rel="stylesheet"
+/>
+<!-- Bootstrap CSS -->
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+    crossorigin="anonymous"
+/>
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+<link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+/>
+<link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+/>
+<link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+/>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+<link href="{% static 'css/upload.css' %}" rel="stylesheet" />
+
+<!-- END OF HOMEPAGE CSS DECLARATION -->
+
 <div class="homePage">
     <nav class="navbar navbar-expand-sm fixed-top" style="background-color: #064420;">
         <a class="navbar-brand" href="#"></a>
@@ -52,51 +89,13 @@
                             <!-- Table of content -->
                             <div id="simple-list-example" class="d-flex flex-column gap-2 simple-list-example-scrollspy text-left">
                                 <h5>CATEGORIES</h5>
-                                {% for thesis in thesis %}
-                                    {% for tags in thesis.tags.all %}
-                                        <label>
-                                            <input class="filter-checkbox" type="checkbox" data-filter="category" value="{{tags.name}}"/>
-                                            <span class="span-checkbox-font" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
-                                            font-size: 10pt !important;
-                                            color: black;">Agriculture</span>
-                                        </label>
-                                        <label>
-                                            <input class="filter-checkbox" type="checkbox" data-filter="category" value="{{tags.name}}" />
-                                            <span style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
-                                            font-size: 10pt !important;
-                                            color: black;">Medical Technology</span>
-                                        </label>
-                                        <label>
-                                            <input class="filter-checkbox" type="checkbox" data-filter="category" value="{{tags.name}}" />
-                                            <span style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
-                                            font-size: 10pt !important;
-                                            color: black;">Machine Learning</span>
-                                        </label>
-                                        <label>
-                                            <input class="filter-checkbox" type="checkbox" data-filter="category" value="{{tags.name}}" />
-                                            <span style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
-                                            font-size: 10pt !important;
-                                            color: black;">Deep Learning</span>
-                                        </label>
-                                        <label>
-                                            <input class="filter-checkbox" type="checkbox" data-filter="category" value="{{tags.name}}" />
-                                            <span style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
-                                            font-size: 10pt !important;
-                                            color: black;">Artificial Intelligence</span>
-                                        </label>
-                                        <label>
-                                            <input class="filter-checkbox" type="checkbox" data-filter="category" value="{{tags.name}}" />
-                                            <span style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
-                                            font-size: 10pt !important;
-                                            color: black;">Education</span>
-                                        </label>
-                                        <label>
-                                            <input class="filter-checkbox" type="checkbox" data-filter="category" value="{{tags.name}}" />
-                                            <span style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
-                                            font-size: 10pt !important;
-                                            color: black;">Environment</span>
-                                        </label>
-                                    {% endfor %}
+                                {% for tag in tags %}
+                                    <label>
+                                        <input class="filter-checkbox" type="checkbox" data-filter="category" value="{{tag.name}}"/>
+                                        <span class="span-checkbox-font" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
+                                        font-size: 10pt !important;
+                                        color: black;">{{tag.name}}</span>
+                                    </label>
                                 {% endfor %}
                             </div>
                         </div>

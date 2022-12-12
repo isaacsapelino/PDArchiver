@@ -18,7 +18,10 @@ import mimetypes
 
 from .form import searchForm, uploadThesisForm
 
+from taggit.models import Tag
+
 from .models import Thesis
+
 
 # Create your views here.
 
@@ -33,10 +36,12 @@ class homePage(ListView):
     def get(self, request, *args, **kwargs):
 
         thesis = Thesis.objects.all()
+        tags = Tag.objects.all()
 
         context = {
             'form' : self.form_class,
             'thesis' : thesis,
+            'tags' : tags,
         }
 
         return render(request, template_name='home.html', context=context)
@@ -83,6 +88,16 @@ class uploadPage(DetailView):
 
     tag_list = []
 
+    list_of_elements_in_tags = [
+        'Artificial Intelligence',
+        'Deep Learning',
+        'Environment',
+        'Education',
+        'Machine Learning',
+        'Medical Technology',
+        'Agriculture'
+    ]
+
     form = uploadThesisForm
 
     def get(self, request, *args, **kwargs):
@@ -100,7 +115,7 @@ class uploadPage(DetailView):
             instance.save()
             authors = form.cleaned_data['authors']
             tags = form.cleaned_data['tags']          
-
+            print(tags)
             for author in authors:
                 instance.authors.add(author)            
 
@@ -109,13 +124,12 @@ class uploadPage(DetailView):
             chars_to_remove = [',',':','[','{',']','}','value']
 
             temp_tags = ' '.join(tags)
+            print(temp_tags)
 
             for i in chars_to_remove:
                 temp_tags = temp_tags.replace(i, '')
             
             tags = temp_tags.split()
-
-            print(tags)
 
             for value in tags:
                 print(value)
