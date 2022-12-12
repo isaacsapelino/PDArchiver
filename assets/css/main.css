@@ -44,7 +44,7 @@ h4 {
 }
 
 .loginPageScreen {
-  background-color: green;
+  background-color: #1d4214;
 }
 
 /* LOGIN PAGE SCREEN DIALOG */
@@ -182,6 +182,7 @@ h4 {
 /* REGISTER PAGE CSS */
 .registerPage {
   background-color: #b6e388;
+
   height: 100vh;
 }
 
@@ -190,11 +191,11 @@ h4 {
   width: 100%;
   background-color: #1d4214;
   padding-left: 3em;
+  color: white;
 }
 
 .registerPageWrapper h4 {
   font-size: 15pt;
-  
 }
 
 .registerPageWrapperMainScreen {
@@ -208,6 +209,7 @@ h4 {
 
 .registerPageWrapperTitle {
   display: flex;
+  color: black;
   align-items: baseline;
   justify-content: space-between;
   width: 100%;
@@ -265,7 +267,7 @@ h4 {
 /* HOME SEARCH PAGE CSS */
 .homePage {
   background: #b6e388;
-  
+
   height: auto;
 }
 
@@ -283,97 +285,12 @@ h4 {
 
 /*END OF HOME SEARCH PAGE*/
 
-
-/*UPLOAD PAGE*/
-
-.uploadPage {
-    background-color: #15542f;
-    font-weight: bold;
-    color: #fefefe;
-    font-family: 'Poppins', sans-serif;
-    min-height: 100vh;
-    max-height: auto;
-    padding-left: 10em;
-    padding-right: 10em;
-
-}
-input[type=text]#id_title::placeholder{
-  
-}
-
-{
-  box-sizing: border-box;
-}
-
-input[type=text], select, textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid black;
-  background-color: #f8f7ee;
-  border-radius: 4px;
-  resize: vertical;
-}
-
-label {
-  padding: 12px 12px 12px 0;
-  display: inline-block;
-}
-
-input[type=submit] {
-  background-color: #f8f7ee;
-  color: black;
-  font-weight: bold;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  float: right;
-}
-
-input[type=submit]:hover {
-
-.container {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-}
-
-.col-25 {
-  float: left;
-  width: 25%;
-  margin-top: 6px;
-}
-
-.col-75 {
-  float: left;
-  width: 75%;
-  margin-top: 6px;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .col-25, .col-75, input[type=submit] {
-    width: 100%;
-    margin-top: 0;
-  }
-  
-}
-
-/*END UPLOAD PAGE*/
 /*movinglettershome*/
 .ml15 {
   font-weight: 800;
   font-size: 3.8em;
   text-transform: uppercase;
   letter-spacing: 0.5em;
-  
 }
 
 .ml15 .word {
@@ -383,37 +300,41 @@ input[type=submit]:hover {
 
 /*end movinglettershome*/
 
-.tags-look .tagify__dropdown__item{
+.tags-look .tagify__dropdown__item {
   display: inline-block;
   vertical-align: middle;
   border-radius: 3px;
-  padding: .3em .5em;
-  border: 1px solid #CCC;
-  background: #F3F3F3;
-  margin: .2em;
-  font-size: .85em;
+  padding: 0.3em 0.5em;
+  border: 1px solid #ccc;
+  background: #f3f3f3;
+  margin: 0.2em;
+  font-size: 0.85em;
   color: black;
   transition: 0s;
 }
 
-.tags-look .tagify__dropdown__item--active{
+.tags-look .tagify__dropdown__item--active {
   color: black;
 }
 
-.tags-look .tagify__dropdown__item:hover{
+.tags-look .tagify__dropdown__item:hover {
   background: lightyellow;
   border-color: gold;
 }
 
 .tags-look .tagify__dropdown__item--hidden {
-    max-width: 0;
-    max-height: initial;
-    padding: .3em 0;
-    margin: .2em 0;
-    white-space: nowrap;
-    text-indent: -20px;
-    border: 0;
+  max-width: 0;
+  max-height: initial;
+  padding: 0.3em 0;
+  margin: 0.2em 0;
+  white-space: nowrap;
+  text-indent: -20px;
+  border: 0;
 }
 
 /* CHECKBOX FONTS */
 
+/*UPLOAD*/
+
+#id_title {
+}

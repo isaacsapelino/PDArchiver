@@ -1,6 +1,7 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
-<body>
-<div class=uploadPage>
+
+<div class="uploadPage">
+  <link href="{% static 'css/upload.css' %}" rel="stylesheet" />
 <div class="return">
   <div class="row">
     <div class="col-25">
@@ -8,62 +9,8 @@
     </div>
 
 
-<h2><center> UPLOAD PD DOCUMENT </center></h2>
+<h2><center>UPLOAD PD DOCUMENT</center></h2>
 
-{% comment %} 
-<div class="container">
-    <div class="row">
-      <div class="col-25">
-        <label for="researchTitle">PROJECT DESIGN TITLE</label>
-      </div>
-      <div class="col-75">
-        <input type="text" id="researchTitle" name="Research Title" placeholder="PROJECT DESIGN TITLE">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="abstract">ABSTRACT</label>
-      </div>
-      <div class="col-75">
-        <textarea  id="abstract" name="abstract" placeholder="PROJECT DESIGN ABSTRACT" style="height:350px"></textarea>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="author">AUTHORS</label>
-      </div>
-      <div class="col-75">
-        <input type="text" id="author" name="author" placeholder="PROJECT DESIGN AUTHORS">
-      </div>
-    </div>
-    <div class="row">
-        <div class="col-25">
-          <label for="year">YEAR</label>
-        </div>
-        <div class="col-75">
-          <input type="date" id="year" name="year" value="" min="1997-01-01" max="2030-12-31">
-        </div>
-    </div>
-      <div class="row">
-        <div class="col-25">
-                <label for="myfile">SELECT PDF FILE</label>
-        </div> 
-        <div class="col-75">
-            <input  type="file" accept="application/pdf" name="myfile">
-
-        </div>
-      
-      </div>
-       
-
-    
-    <div class="row">
-      <input type="submit" value="Submit">
-      <button type="cancel" value="CANCEL" onclick="history.back()">CANCEL</button>
-    </div>
-
-  
-</div> {% endcomment %}
     <form action="#" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{ form.as_p }}

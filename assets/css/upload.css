@@ -1,16 +1,17 @@
 /*UPLOAD PAGE*/
 
 .uploadPage {
-  background-color: #15542f;
+  background-color: #1d4214;
   font-weight: bold;
-  color: #fefefe;
+  color: white;
   font-family: "Poppins", sans-serif;
   min-height: 100vh;
   max-height: auto;
   padding-left: 10em;
   padding-right: 10em;
 }
-{
+
+ {
   box-sizing: border-box;
 }
 
@@ -20,7 +21,8 @@ textarea {
   width: 100%;
   padding: 12px;
   border: 1px solid black;
-  background-color: #f8f7ee;
+  background-color: #fefefe;
+  color: black;
   border-radius: 4px;
   resize: vertical;
   line-height: 10em !important;
@@ -28,11 +30,11 @@ textarea {
 
 label {
   padding: 12px 12px 12px 0;
-  display: inline-block;
+  display: inline-block;s
 }
 
 input[type="submit"] {
-  background-color: #f8f7ee;
+  background-color: #fefefe;
   color: black;
   font-weight: bold;
   padding: 12px 20px;
@@ -40,6 +42,14 @@ input[type="submit"] {
   border-radius: 5px;
   cursor: pointer;
   float: right;
+}
+
+input[type="submit"]:hover {
+  .container {
+    border-radius: 5px;
+    background-color: #fefefe;
+    padding: 20px;
+  }
 }
 
 .col-25 {

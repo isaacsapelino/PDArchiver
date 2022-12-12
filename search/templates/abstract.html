@@ -19,11 +19,10 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 
 <!-- Header -->
 
-<header class="w3-container w3-green " style="padding: 1px;">
-    <button style="font-size:17px" onclick="history.back()">RETURN <i class="fa fa-arrow-circle-left"></i></button>
+<header class="w3-container" style="background-color: #064420; style="padding: 1px;">
+  <button style="font-size:17px" onclick="history.back()"><i class="fa fa-arrow-circle-left"></i>RETURN </button>
   <h1 class="w3-margin w3-jumbo w3-center">{{thesis.title}}</h1>
-  <h2 class="w3-margin w3-jumbo w3-center">{% for author in thesis.authors.all %} {{author.detailName}} {%endfor%}</h2>
-  
+  <h3 class="w3-margin w3-w3-medium w3-center" style="color: #fefefe">{% for author in thesis.authors.all %} {{author.detailName}} {%endfor%}</h3>
 </header>
 
 
