@@ -44,7 +44,7 @@ h4 {
 }
 
 .loginPageScreen {
-  background-color: green;
+  background-color: #1d4214;
 }
 
 /* LOGIN PAGE SCREEN DIALOG */
@@ -182,6 +182,7 @@ h4 {
 /* REGISTER PAGE CSS */
 .registerPage {
   background-color: #b6e388;
+
   height: 100vh;
 }
 
@@ -190,11 +191,11 @@ h4 {
   width: 100%;
   background-color: #1d4214;
   padding-left: 3em;
+  color: white;
 }
 
 .registerPageWrapper h4 {
   font-size: 15pt;
-  
 }
 
 .registerPageWrapperMainScreen {
@@ -208,6 +209,7 @@ h4 {
 
 .registerPageWrapperTitle {
   display: flex;
+  color: black;
   align-items: baseline;
   justify-content: space-between;
   width: 100%;
@@ -265,7 +267,7 @@ h4 {
 /* HOME SEARCH PAGE CSS */
 .homePage {
   background: #b6e388;
-  
+
   height: auto;
 }
 
@@ -283,6 +285,7 @@ h4 {
 
 /*END OF HOME SEARCH PAGE*/
 
+<<<<<<< HEAD
 
 /* Clear floats after the columns */
 .row:after {
@@ -301,13 +304,14 @@ h4 {
 }
 
 /*END UPLOAD PAGE*/
+=======
+>>>>>>> ec8ad089ba557bfd871776d3e2cae93273ba3ef9
 /*movinglettershome*/
 .ml15 {
   font-weight: 800;
   font-size: 3.8em;
   text-transform: uppercase;
   letter-spacing: 0.5em;
-  
 }
 
 .ml15 .word {
@@ -317,37 +321,41 @@ h4 {
 
 /*end movinglettershome*/
 
-.tags-look .tagify__dropdown__item{
+.tags-look .tagify__dropdown__item {
   display: inline-block;
   vertical-align: middle;
   border-radius: 3px;
-  padding: .3em .5em;
-  border: 1px solid #CCC;
-  background: #F3F3F3;
-  margin: .2em;
-  font-size: .85em;
+  padding: 0.3em 0.5em;
+  border: 1px solid #ccc;
+  background: #f3f3f3;
+  margin: 0.2em;
+  font-size: 0.85em;
   color: black;
   transition: 0s;
 }
 
-.tags-look .tagify__dropdown__item--active{
+.tags-look .tagify__dropdown__item--active {
   color: black;
 }
 
-.tags-look .tagify__dropdown__item:hover{
+.tags-look .tagify__dropdown__item:hover {
   background: lightyellow;
   border-color: gold;
 }
 
 .tags-look .tagify__dropdown__item--hidden {
-    max-width: 0;
-    max-height: initial;
-    padding: .3em 0;
-    margin: .2em 0;
-    white-space: nowrap;
-    text-indent: -20px;
-    border: 0;
+  max-width: 0;
+  max-height: initial;
+  padding: 0.3em 0;
+  margin: 0.2em 0;
+  white-space: nowrap;
+  text-indent: -20px;
+  border: 0;
 }
 
 /* CHECKBOX FONTS */
 
+/*UPLOAD*/
+
+#id_title {
+}

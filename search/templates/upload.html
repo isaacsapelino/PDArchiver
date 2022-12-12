@@ -1,12 +1,6 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>UPLOAD</title>
-<link href="{% static 'css/upload.css' %}" rel="stylesheet" />
-</head>
-<body>
 <div class="uploadPage">
+  <link href="{% static 'css/upload.css' %}" rel="stylesheet" />
 <div class="return">
   <div class="row">
     <div class="col-25">
@@ -14,15 +8,15 @@
     </div>
 
 
-<h2><center> UPLOAD PD DOCUMENT </center></h2>
-
+<h2><center>UPLOAD PD DOCUMENT</center></h2>
 
     <form action="#" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{ form.as_p }}
       <ul id="tagsList">
       </ul>
-      <button type="submit">Submit</button>
+      <button type="submit" style="font-size:18px">Submit</button>
+      <button style="font-size:18px" onclick="history.back()">Cancel<i class="fa fa-arrow-circle-left"></i></button>
     </form>
     
 
