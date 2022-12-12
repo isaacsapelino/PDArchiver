@@ -1,4 +1,5 @@
 .uploadPage {
+<<<<<<< HEAD
     background: #064420;
     font-weight: bold;
     color: #323435;
@@ -6,6 +7,16 @@
     height:auto;
     
 }
+=======
+  background-color: #15542f;
+  font-weight: bold;
+  color: #fefefe;
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  max-height: auto;
+  padding-left: 10em;
+  padding-right: 10em;}
+>>>>>>> 55b97aea4ec84b21cb365fe1d2c4c6a2efa149cb
 
 {
   box-sizing: border-box;

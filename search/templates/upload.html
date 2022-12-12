@@ -1,4 +1,5 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
+<<<<<<< HEAD
 
 
 <div class="uploadPage">
@@ -36,11 +37,14 @@
   
 <div class="uploadPage">
 
+=======
+<body>
+<div class=uploadPage>
+>>>>>>> 55b97aea4ec84b21cb365fe1d2c4c6a2efa149cb
 <div class="return">
   <div class="row">
     <div class="col-25">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <button style="font-size:17px" onclick="history.back()">Previous <i class="fa fa-arrow-circle-left"></i></button>
+      <button style="font-size:17px" onclick="history.back()">Back <i class="fa fa-arrow-circle-left"></i></button>
     </div>
   </div>
   <h2> <center> UPLOAD PD DOCUMENT </center> </h2>
@@ -48,15 +52,79 @@
 </div>
 
 
+<<<<<<< HEAD
+=======
+<h2><center> UPLOAD PD DOCUMENT </center></h2>
+
+{% comment %} 
+<div class="container">
+    <div class="row">
+      <div class="col-25">
+        <label for="researchTitle">PROJECT DESIGN TITLE</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="researchTitle" name="Research Title" placeholder="PROJECT DESIGN TITLE">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="abstract">ABSTRACT</label>
+      </div>
+      <div class="col-75">
+        <textarea  id="abstract" name="abstract" placeholder="PROJECT DESIGN ABSTRACT" style="height:350px"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="author">AUTHORS</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="author" name="author" placeholder="PROJECT DESIGN AUTHORS">
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-25">
+          <label for="year">YEAR</label>
+        </div>
+        <div class="col-75">
+          <input type="date" id="year" name="year" value="" min="1997-01-01" max="2030-12-31">
+        </div>
+    </div>
+      <div class="row">
+        <div class="col-25">
+                <label for="myfile">SELECT PDF FILE</label>
+        </div> 
+        <div class="col-75">
+            <input  type="file" accept="application/pdf" name="myfile">
+
+        </div>
+      
+      </div>
+       
+
+    
+    <div class="row">
+      <input type="submit" value="Submit">
+      <button type="cancel" value="CANCEL" onclick="history.back()">CANCEL</button>
+    </div>
+
+  
+</div> {% endcomment %}
+>>>>>>> 55b97aea4ec84b21cb365fe1d2c4c6a2efa149cb
     <form action="#" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{ form.as_p }}
       <ul id="tagsList">
       </ul>
+<<<<<<< HEAD
       <button type="submit" id="submitBtn" onclick="myFunction()">Submit</button>
+=======
+      <button type="submit">Submit</button>
+>>>>>>> 55b97aea4ec84b21cb365fe1d2c4c6a2efa149cb
     </form>
     
 
+</body>
 {% endblock %}
 {% block script %}
 <script type="text/javascript">
@@ -96,8 +164,8 @@
       closeOnSelect: false,
       enabled : 0,
     }
-    
   })
+<<<<<<< HEAD
   function myFunction() {
     var txt;
     if (confirm("Are you sure you want to continue?")) {
@@ -108,5 +176,11 @@
     }
     
   }
+=======
+
+ 
+
+
+>>>>>>> 55b97aea4ec84b21cb365fe1d2c4c6a2efa149cb
 </script>
 {% endblock %}
