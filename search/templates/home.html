@@ -120,7 +120,7 @@
                                             <small>{{authors.detailName}},</small>
                                         {% endfor %} <br />
                                         {% for tags in thesis.tags.all %}
-                                            <small>{{tags.name}}</small>
+                                            <small>{{tags.name}},</small>
                                     {% endfor %}
                                     {% endfor %}
                                     
@@ -158,7 +158,9 @@
            
         </div>
         <!-- end of container for our layout -->
-        
+        {% if messages %} {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %} {% endif %}
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
         
@@ -195,7 +197,7 @@
                             <p class="mb-1">${thesis.abstract}</p>
                             ${thesis.authors.map((e) => `<small>${e.fullName}</small>`)}
                             <br />
-                            ${thesis.tags.map((e) => `<small>${e}</small>`)}
+                            ${thesis.tags.map((e) => ` <small>${e}</small>`)}
                         `
                             
                     })
@@ -256,5 +258,8 @@
       easing: "easeOutExpo",
       delay: 1000
     });
+
+   
+
 </script>
 {% endblock %}

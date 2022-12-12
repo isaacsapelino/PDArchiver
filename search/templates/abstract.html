@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% load customtags %} {% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,8 +21,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 
 <header class="w3-container w3-green " style="padding: 1px;">
     <button style="font-size:17px" onclick="history.back()">RETURN <i class="fa fa-arrow-circle-left"></i></button>
-  <h1 class="w3-margin w3-jumbo w3-center">RESEARCH TITLE</h1>
-  <h2 class="w3-margin w3-jumbo w3-center">AUTHORS</h2>
+  <h1 class="w3-margin w3-jumbo w3-center">{{thesis.title}}</h1>
+  <h2 class="w3-margin w3-jumbo w3-center">{% for author in thesis.authors.all %} {{author.detailName}} {%endfor%}</h2>
   
 </header>
 
@@ -31,10 +31,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   <div class="w3-content">
     <div class="w3-twothird">
       <h3>ABSTRACT</h3>
-      <h4 class="w3-padding-32" style="color: black;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-        laboris nisi ut aliquip ex ea commodo consequat.</h4>
-        <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">DOWNLOAD</button>
+      <h4 class="w3-padding-32" style="color: black;">{{thesis.abstract}}</h4>
+        <a href="{% url 'downloadFile' thesis.slug thesis.document.name %}" class="w3-button w3-black w3-padding-large w3-large w3-margin-top">DOWNLOAD</a>
     </div>
    
 
