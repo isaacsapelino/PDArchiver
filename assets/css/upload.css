@@ -1,7 +1,13 @@
 /*UPLOAD PAGE*/
+* {
+  padding: 0;
+  margin: 0;
+
+}
 
 .uploadPage {
   background-color: #15542f;
+  background:cover;
   font-weight: bold;
   color: #fefefe;
   font-family: "Poppins", sans-serif;
@@ -9,6 +15,7 @@
   max-height: auto;
   padding-left: 10em;
   padding-right: 10em;
+  padding-top: 0;
 }
 {
   box-sizing: border-box;
@@ -41,6 +48,7 @@ input[type="submit"] {
   cursor: pointer;
   float: right;
 }
+
 
 .col-25 {
   float: left;
