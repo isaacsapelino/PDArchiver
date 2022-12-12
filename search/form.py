@@ -17,7 +17,11 @@ class uploadThesisForm(ModelForm):
         'class': 'form-control me-2',
         'placeholder' : 'Research title',
         }))
-    abstract = forms.CharField(label='Abstract', required=True, max_length=1000, widget=forms.Textarea(attrs={
+
+  
+
+    abstract = forms.CharField(label='Abstract', required=True, widget=forms.Textarea(attrs={
+
         'class': 'form-control me-2', }))
     authors = forms.ModelMultipleChoiceField(queryset=PDFBaseUser.objects.all())
     tags = TagField()

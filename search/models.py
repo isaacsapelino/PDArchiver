@@ -21,7 +21,7 @@ class Tag(models.Model):
 class Thesis(models.Model):
     title = models.CharField(max_length=255)
     date_submitted = models.DateTimeField(auto_now_add=True)
-    abstract = models.CharField(max_length=255)
+    abstract = models.TextField()
     uploader = models.ForeignKey(PDFBaseUser, on_delete=models.CASCADE, related_name='Uploader', null=True)
     authors = models.ManyToManyField(PDFBaseUser, related_name='Authors')
     year = models.DateField(default=datetime.date.today)
