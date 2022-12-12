@@ -1,69 +1,117 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
-<body>
-<div class=uploadPage>
-<div class="return">
-  <div class="row">
-    <div class="col-25">
-      <button style="font-size:17px" onclick="history.back()">Back <i class="fa fa-arrow-circle-left"></i></button>
+
+<div class="uploadPage">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+  />
+  <link href="{% static 'css/upload.css' %}" rel="stylesheet" />
+  <body>
+    <div class="uploadPage">
+      =======
+      <body>
+        <div class="uploadPage">
+          >>>>>>> 55b97aea4ec84b21cb365fe1d2c4c6a2efa149cb
+          <div class="return">
+            <div class="row">
+              <div class="col-25">
+                <button style="font-size: 17px" onclick="history.back()">
+                  Back <i class="fa fa-arrow-circle-left"></i>
+                </button>
+              </div>
+            </div>
+            <h2><center>UPLOAD PD DOCUMENT</center></h2>
+          </div>
+        </div>
+
+        <h2><center>UPLOAD PD DOCUMENT</center></h2>
+
+        <form action="#" method="post" enctype="multipart/form-data">
+          {% csrf_token %} {{ form.as_p }}
+          <ul id="tagsList"></ul>
+          <button type="submit" id="submitBtn" onclick="myFunction()">
+            Submit
+          </button>
+        </form>
+      </body>
+      {% endblock %} {% block script %}
+      <script type="text/javascript">
+        M.AutoInit();
+
+        const taggableList = [
+          "Agriculture",
+          "Artificial Intelligence",
+          "Medical Technology",
+          "Deep Learning",
+          "Education",
+          "Environment",
+          "Machine Learning",
+        ];
+
+        const inputTag = document.querySelector("[name=tags]");
+        tagify = new Tagify(inputTag, {
+          duplicates: false,
+          placeholder: "Enter your tags for your thesis.",
+          autoComplete: {
+            enabled: true,
+            rightKey: false,
+          },
+          whitelist: [
+            "Deep Learning",
+            "Agriculture",
+            "Machine Learning",
+            "Medical Technology",
+            "Education",
+            "Environment",
+            "Artificial Intelligence",
+          ],
+          enforceWhitelist: true,
+          maxTags: 7,
+          dropdown: {
+            maxItems: 7,
+            className: "tags-look",
+            closeOnSelect: false,
+            enabled: 0,
+          },
+        });
+        function myFunction() {
+          var txt;
+          if (confirm("Are you sure you want to continue?")) {
+            txt = "Confirm!";
+          } else {
+            txt = "Cancel!";
+          }
+        }
+      </script>
+      {% endblock %}
     </div>
-
-
-<h2><center> UPLOAD PD DOCUMENT </center></h2>
-
-
-    <form action="#" method="post" enctype="multipart/form-data">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <ul id="tagsList">
-      </ul>
-      <button type="submit">Submit</button>
-    </form>
-    
-
-</body>
-{% endblock %}
-{% block script %}
-<script type="text/javascript">
-  M.AutoInit();
-
-  const taggableList = ["Agriculture",
-    "Artificial Intelligence",
-    "Medical Technology",
-    "Deep Learning",
-    "Education",
-    "Environment",
-    "Machine Learning"
-  ]
-
-  const inputTag = document.querySelector('[name=tags]');
-  tagify = new Tagify(inputTag, {
-    duplicates: false,
-    placeholder: 'Enter your tags for your thesis.',
-    autoComplete: {
-      enabled: true,
-      rightKey: false
-    },
-    whitelist: [
-      'Deep Learning',
-      'Agriculture',
-      'Machine Learning',
-      'Medical Technology',
-      'Education',
-      'Environment',
-      'Artificial Intelligence',
-    ],
-    enforceWhitelist: true,
-    maxTags: 7,
-    dropdown: {
-      maxItems: 7,
-      className: "tags-look",
-      closeOnSelect: false,
-      enabled : 0,
-    }
-  })
-
- 
-
-
-</script>
-{% endblock %}
+  </body>
+</div>
