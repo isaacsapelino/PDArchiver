@@ -3,12 +3,14 @@
 /*UPLOAD PAGE*/
 
 .uploadPage {
-    background: #064420;
-    font-weight: bold;
-    color: #fefefe;
-    font-family: 'Poppins', sans-serif;
-    height: 100%;
-}
+  background-color: #15542f;
+  font-weight: bold;
+  color: #fefefe;
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  max-height: auto;
+  padding-left: 10em;
+  padding-right: 10em;}
 
 {
   box-sizing: border-box;

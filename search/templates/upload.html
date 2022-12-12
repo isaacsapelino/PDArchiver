@@ -1,66 +1,79 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
-<<<<<<< HEAD
-
-<div class="uploadPage">
-=======
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap"
-    rel="stylesheet"
-/>
-<!-- Bootstrap CSS -->
-<link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
-    crossorigin="anonymous"
-/>
-<link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-/>
-<link
-    rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-/>
-<link
-    rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-/>
-<link
-    rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-/>
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
-<link href="{% static 'css/upload.css' %}" rel="stylesheet" />
 <body>
-  
 <div class=uploadPage>
->>>>>>> c0dc44025659d1cc36d4334eb05bb3935cd244e7
 <div class="return">
   <div class="row">
     <div class="col-25">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <button style="font-size:17px" onclick="history.back()">Previous <i class="fa fa-arrow-circle-left"></i></button>
+      <button style="font-size:17px" onclick="history.back()">Back <i class="fa fa-arrow-circle-left"></i></button>
     </div>
 
 
 <h2><center> UPLOAD PD DOCUMENT </center></h2>
-<<<<<<< HEAD
 
-=======
->>>>>>> c0dc44025659d1cc36d4334eb05bb3935cd244e7
+{% comment %} 
+<div class="container">
+    <div class="row">
+      <div class="col-25">
+        <label for="researchTitle">PROJECT DESIGN TITLE</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="researchTitle" name="Research Title" placeholder="PROJECT DESIGN TITLE">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="abstract">ABSTRACT</label>
+      </div>
+      <div class="col-75">
+        <textarea  id="abstract" name="abstract" placeholder="PROJECT DESIGN ABSTRACT" style="height:350px"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="author">AUTHORS</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="author" name="author" placeholder="PROJECT DESIGN AUTHORS">
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-25">
+          <label for="year">YEAR</label>
+        </div>
+        <div class="col-75">
+          <input type="date" id="year" name="year" value="" min="1997-01-01" max="2030-12-31">
+        </div>
+    </div>
+      <div class="row">
+        <div class="col-25">
+                <label for="myfile">SELECT PDF FILE</label>
+        </div> 
+        <div class="col-75">
+            <input  type="file" accept="application/pdf" name="myfile">
+
+        </div>
+      
+      </div>
+       
+
+    
+    <div class="row">
+      <input type="submit" value="Submit">
+      <button type="cancel" value="CANCEL" onclick="history.back()">CANCEL</button>
+    </div>
+
+  
+</div> {% endcomment %}
     <form action="#" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{ form.as_p }}
       <ul id="tagsList">
       </ul>
-      
-      <button type="submit" id="submitBtn" onclick="myFunction()">Submit</button>
+      <button type="submit">Submit</button>
     </form>
     
 
+</body>
 {% endblock %}
 {% block script %}
 <script type="text/javascript">
@@ -100,18 +113,7 @@
       closeOnSelect: false,
       enabled : 0,
     }
-    
   })
-  function myFunction() {
-    var txt;
-    if (confirm("Are you sure you want to continue?")) {
-      txt = "Confirm!";
-    } else {
-      txt = "Cancel!";
-      
-    }
-    
-  }
 
  
 
