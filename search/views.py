@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -7,7 +7,14 @@ from django.utils.decorators import method_decorator
 from django.http import JsonResponse
 from django.utils import timezone
 
+from django.http import HttpResponse, HttpResponseNotFound
+from django.conf import settings
+
+from django.contrib import messages
+import os
+
 from django.core.paginator import Paginator
+import mimetypes
 
 from .form import searchForm, uploadThesisForm
 
@@ -37,7 +44,7 @@ class homePage(ListView):
     def post(self, request, *args, **kwargs):
         if self.request.headers.get('x-requested-with') == 'XMLHttpRequest':
             form_field = request.POST
-            thesis_query = Thesis.objects.filter(title__icontains=form_field['thesis'])
+            thesis_query = Thesis.objects.filter(title__icontains=form_field['thesis']) 
 
             if len(thesis_query) > 0 and len(form_field) > 0:
                 data = []
@@ -114,7 +121,14 @@ class uploadPage(DetailView):
                 print(value)
                 instance.tags.add(value)
                     
-            instance.save()
+            
+            try: 
+                instance.save()
+                messages.success(request, "Document has been uploaded")
+                return redirect('/search/home')
+            except:
+                messages.error(request, "Failed to upload document. Please try again.")
+                return redirect('/search/upload')
             
         else:
             form = uploadThesisForm()
@@ -122,18 +136,45 @@ class uploadPage(DetailView):
  
         context = {
             'form' : self.form,
+            'messages' : messages,
         }
         return render(request, template_name='upload.html', context=context)
 
 @method_decorator(login_required, name='dispatch')
 class abstractPage(DetailView):
-    def get(self, request, *args, **kwargs):
-        context = {}
+
+    def get(self, request, slug, *args, **kwargs):
+
+        obj = Thesis.objects.filter(slug=slug).first()
+
+        context = {
+            'thesis' : obj,
+        }
         return render(request, template_name='abstract.html', context=context)
+        
 
     def post(self, request, *args, **kwargs):
         context = {}
         return render(request, template_name='abstract.html', context=context)
+
+@method_decorator(login_required, name='dispatch')
+class DownloadFile(DetailView):
+    def get(self,request,slug,*args,**kwargs):
+        file = Thesis.objects.get(slug=slug)
+        filename = file.document.name
+        print(filename)
+        file_dir = os.path.join(settings.MEDIA_ROOT, f'{filename}')
+        print(file_dir)
+        if os.path.exists(file_dir):
+            print('File Exists')
+            with open(file_dir, 'rb') as fh:
+                response = HttpResponse(fh.read(), content_type="application/pdf")
+                response['Content-Disposition'] = 'attachment; filename=' + os.path.basename(file_dir)
+                return response
+        else:
+            return HttpResponseNotFound('Error')
+
+        
 
         
 

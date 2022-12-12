@@ -181,7 +181,8 @@ h4 {
 /* END OF LOGIN PAGE */
 /* REGISTER PAGE CSS */
 .registerPage {
-  background-color: #3f5826;
+  background-color: #b6e388;
+
   height: 100vh;
 }
 
@@ -264,9 +265,9 @@ h4 {
 /*END OF REGISTER PAGE*/
 /* HOME SEARCH PAGE CSS */
 .homePage {
-    background: #b6e388;
-    
-  height: 138vh;
+  background: #b6e388;
+  
+  height: auto;
 }
 
 .topnav-right {
