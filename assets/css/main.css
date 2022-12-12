@@ -263,9 +263,9 @@ h4 {
 /*END OF REGISTER PAGE*/
 /* HOME SEARCH PAGE CSS */
 .homePage {
-    background: #b6e388;
-    
-  height: 138vh;
+  background: #b6e388;
+  
+  height: auto;
 }
 
 .topnav-right {
