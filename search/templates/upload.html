@@ -1,5 +1,4 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
-<<<<<<< HEAD
 
 
 <div class="uploadPage">
@@ -37,10 +36,8 @@
   
 <div class="uploadPage">
 
-=======
 <body>
 <div class=uploadPage>
->>>>>>> 55b97aea4ec84b21cb365fe1d2c4c6a2efa149cb
 <div class="return">
   <div class="row">
     <div class="col-25">
@@ -52,8 +49,6 @@
 </div>
 
 
-<<<<<<< HEAD
-=======
 <h2><center> UPLOAD PD DOCUMENT </center></h2>
 
 {% comment %} 
@@ -110,17 +105,13 @@
 
   
 </div> {% endcomment %}
->>>>>>> 55b97aea4ec84b21cb365fe1d2c4c6a2efa149cb
     <form action="#" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{ form.as_p }}
       <ul id="tagsList">
       </ul>
-<<<<<<< HEAD
       <button type="submit" id="submitBtn" onclick="myFunction()">Submit</button>
-=======
       <button type="submit">Submit</button>
->>>>>>> 55b97aea4ec84b21cb365fe1d2c4c6a2efa149cb
     </form>
     
 
@@ -165,7 +156,6 @@
       enabled : 0,
     }
   })
-<<<<<<< HEAD
   function myFunction() {
     var txt;
     if (confirm("Are you sure you want to continue?")) {
@@ -176,11 +166,5 @@
     }
     
   }
-=======
-
- 
-
-
->>>>>>> 55b97aea4ec84b21cb365fe1d2c4c6a2efa149cb
 </script>
 {% endblock %}
