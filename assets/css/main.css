@@ -195,7 +195,7 @@ h4 {
 
 .registerPageWrapper h4 {
   font-size: 15pt;
-  background-color: #b6e388;
+  
 }
 
 .registerPageWrapperMainScreen {
@@ -288,11 +288,18 @@ h4 {
 /*UPLOAD PAGE*/
 
 .uploadPage {
-    background: #064420;
+    background-color: #15542f;
     font-weight: bold;
     color: #fefefe;
     font-family: 'Poppins', sans-serif;
-    height: 100%;
+    min-height: 100vh;
+    max-height: auto;
+    padding-left: 10em;
+    padding-right: 10em;
+
+}
+input[type=text]#id_title::placeholder{
+  
 }
 
 {

@@ -9,14 +9,15 @@ class searchForm(forms.Form):
     searchField = forms.CharField(label='', required=False, max_length=255, widget=forms.TextInput(attrs={
         'class' : 'form-control me-2',
         'aria-label' : 'Search',
-        'placeholder' : 'Find a document that you are looking for..',
+        'placeholder' : 'Search thesis document ..',
     }))
 
 class uploadThesisForm(ModelForm):
     title = forms.CharField(label='Project Design Title', required=True, max_length=255, widget=forms.TextInput(attrs={
         'class': 'form-control me-2',
+        'placeholder' : 'Research title',
         }))
-    abstract = forms.CharField(label='Abstract', required=True, max_length=255, widget=forms.Textarea(attrs={
+    abstract = forms.CharField(label='Abstract', required=True, max_length=1000, widget=forms.Textarea(attrs={
         'class': 'form-control me-2', }))
     authors = forms.ModelMultipleChoiceField(queryset=PDFBaseUser.objects.all())
     tags = TagField()
