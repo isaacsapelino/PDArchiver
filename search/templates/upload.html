@@ -1,10 +1,11 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
+
 <div class="uploadPage">
   <link href="{% static 'css/upload.css' %}" rel="stylesheet" />
 <div class="return">
   <div class="row">
     <div class="col-25">
-      <button style="font-size:17px" onclick="history.back()">Back <i class="fa fa-arrow-circle-left"></i></button>
+      <button style="font-size:17px" onclick="history.back()"class="fa fa-arrow-circle-left"> RETURN </button>
     </div>
 
 
@@ -15,7 +16,7 @@
       {{ form.as_p }}
       <ul id="tagsList">
       </ul>
-      <button type="submit" style="font-size:18px">Submit</button>
+      <button type="submit" id="submitBtn" style="font-size:18px" onclick="myFunction()"> Submit</button>
       <button style="font-size:18px" onclick="history.back()">Cancel<i class="fa fa-arrow-circle-left"></i></button>
     </form>
     
@@ -61,9 +62,14 @@
       enabled : 0,
     }
   })
+  function myFunction() {
+    alert("Confirm Upload?");
+  }
 
  
 
 
 </script>
 {% endblock %}
+
+{% block title %} UPLOAD {% endblock %}
