@@ -407,4 +407,15 @@ input[type=submit]:hover {
     border: 0;
 }
 
+/* CHECKBOX FONTS */
+.span-checkbox-font {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+  font-size: 10pt !important;
+  color: black;
+}
+
+.abstract_desc {
+  heigth: 10em;
+}
+
 
