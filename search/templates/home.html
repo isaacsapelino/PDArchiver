@@ -89,51 +89,13 @@
                             <!-- Table of content -->
                             <div id="simple-list-example" class="d-flex flex-column gap-2 simple-list-example-scrollspy text-left">
                                 <h5>CATEGORIES</h5>
-                                {% for thesis in thesis %}
-                                    {% for tags in thesis.tags.all %}
-                                        <label>
-                                            <input class="filter-checkbox" type="checkbox" data-filter="category" value="{{tags.name}}"/>
-                                            <span class="span-checkbox-font" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
-                                            font-size: 10pt !important;
-                                            color: black;">Agriculture</span>
-                                        </label>
-                                        <label>
-                                            <input class="filter-checkbox" type="checkbox" data-filter="category" value="{{tags.name}}" />
-                                            <span style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
-                                            font-size: 10pt !important;
-                                            color: black;">Medical Technology</span>
-                                        </label>
-                                        <label>
-                                            <input class="filter-checkbox" type="checkbox" data-filter="category" value="{{tags.name}}" />
-                                            <span style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
-                                            font-size: 10pt !important;
-                                            color: black;">Machine Learning</span>
-                                        </label>
-                                        <label>
-                                            <input class="filter-checkbox" type="checkbox" data-filter="category" value="{{tags.name}}" />
-                                            <span style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
-                                            font-size: 10pt !important;
-                                            color: black;">Deep Learning</span>
-                                        </label>
-                                        <label>
-                                            <input class="filter-checkbox" type="checkbox" data-filter="category" value="{{tags.name}}" />
-                                            <span style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
-                                            font-size: 10pt !important;
-                                            color: black;">Artificial Intelligence</span>
-                                        </label>
-                                        <label>
-                                            <input class="filter-checkbox" type="checkbox" data-filter="category" value="{{tags.name}}" />
-                                            <span style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
-                                            font-size: 10pt !important;
-                                            color: black;">Education</span>
-                                        </label>
-                                        <label>
-                                            <input class="filter-checkbox" type="checkbox" data-filter="category" value="{{tags.name}}" />
-                                            <span style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
-                                            font-size: 10pt !important;
-                                            color: black;">Environment</span>
-                                        </label>
-                                    {% endfor %}
+                                {% for tag in tags %}
+                                    <label>
+                                        <input class="filter-checkbox" type="checkbox" data-filter="category" value="{{tag.name}}"/>
+                                        <span class="span-checkbox-font" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
+                                        font-size: 10pt !important;
+                                        color: black;">{{tag.name}}</span>
+                                    </label>
                                 {% endfor %}
                             </div>
                         </div>
