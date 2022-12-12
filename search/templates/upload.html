@@ -1,5 +1,4 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
-
 <div class="uploadPage">
   <link href="{% static 'css/upload.css' %}" rel="stylesheet" />
 <div class="return">
@@ -16,7 +15,8 @@
       {{ form.as_p }}
       <ul id="tagsList">
       </ul>
-      <button type="submit">Submit</button>
+      <button type="submit" style="font-size:18px">Submit</button>
+      <button style="font-size:18px" onclick="history.back()">Cancel<i class="fa fa-arrow-circle-left"></i></button>
     </form>
     
 
