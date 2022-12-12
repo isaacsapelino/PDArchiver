@@ -181,7 +181,7 @@ h4 {
 /* END OF LOGIN PAGE */
 /* REGISTER PAGE CSS */
 .registerPage {
-  background-color: b6e388;
+  background-color: #3f5826;
   height: 100vh;
 }
 
@@ -194,6 +194,7 @@ h4 {
 
 .registerPageWrapper h4 {
   font-size: 15pt;
+  background-color: #b6e388;
 }
 
 .registerPageWrapperMainScreen {
