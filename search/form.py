@@ -15,6 +15,7 @@ class searchForm(forms.Form):
 class uploadThesisForm(ModelForm):
     title = forms.CharField(label='Project Design Title', required=True, max_length=255, widget=forms.TextInput(attrs={
         'class': 'form-control me-2',
+        'style' : 'background-color: white;',
         'placeholder' : 'Research paper title',
         }))
 
