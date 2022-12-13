@@ -113,10 +113,12 @@ class registerPage(View):
 
 class profilePage(View):
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request, userId, *args, **kwargs):
+        User = get_user_model()
 
+        pdfUser = User.objects.get(userId=userId)
         context = {
-            
+            'user' : pdfUser,
         }
 
         return render (request,template_name='profilePage.html', context=context)

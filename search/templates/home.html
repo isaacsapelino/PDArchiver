@@ -51,7 +51,7 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="topnav-right">
                 <a href="{% url 'upload' %}"><i class="fa fa-upload" style="font-size:20px" ></i>  UPLOAD  &nbsp</a>
-                <a href="#"><i class="fa fa-fw fa-user" style="font-size:20px" ></i> PROFILE &nbsp</a>
+                <a href="{% url 'profile' userId=request.user %}"><i class="fa fa-fw fa-user" style="font-size:20px" ></i> PROFILE &nbsp</a>
                 <a href="{% url 'logout' %}"><i class="fa fa-sign-out" style="font-size:20px" > </i>LOGOUT  &nbsp</a>
       
             </div>
@@ -90,14 +90,56 @@
                             <!-- Table of content -->
                             <div id="simple-list-example" class="d-flex flex-column gap-2 simple-list-example-scrollspy text-left">
                                 <h5>CATEGORIES</h5>
-                                {% for tag in tags %}
+                                {% comment %} {% for tag in tags %}
                                     <label>
                                         <input class="filter-checkbox" type="checkbox" data-filter="category" value="{{tag.name}}"/>
                                         <span class="span-checkbox-font" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
                                         font-size: 10pt !important;
                                         color: black;">{{tag.name}}</span>
                                     </label>
-                                {% endfor %}
+                                {% endfor %} {% endcomment %}
+                                <label>
+                                    <input class="filter-checkbox" type="checkbox" data-filter="category" value="agriculture"/>
+                                    <span class="span-checkbox-font" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
+                                    font-size: 10pt !important;
+                                    color: black;">Agriculture</span>
+                                </label>
+                                <label>
+                                    <input class="filter-checkbox" type="checkbox" data-filter="category" value="aritificial-intelligence"/>
+                                    <span class="span-checkbox-font" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
+                                    font-size: 10pt !important;
+                                    color: black;">Artificial Intelligence</span>
+                                </label>
+                                <label>
+                                    <input class="filter-checkbox" type="checkbox" data-filter="category" value="machine-learning"/>
+                                    <span class="span-checkbox-font" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
+                                    font-size: 10pt !important;
+                                    color: black;">Machine Learning</span>
+                                </label>
+                                <label>
+                                    <input class="filter-checkbox" type="checkbox" data-filter="category" value="deep-learning"/>
+                                    <span class="span-checkbox-font" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
+                                    font-size: 10pt !important;
+                                    color: black;">Deep Learning</span>
+                                </label>
+                                <label>
+                                    <input class="filter-checkbox" type="checkbox" data-filter="category" value="education"/>
+                                    <span class="span-checkbox-font" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
+                                    font-size: 10pt !important;
+                                    color: black;">Education</span>
+                                </label>
+                                <label>
+                                    <input class="filter-checkbox" type="checkbox" data-filter="category" value="environment"/>
+                                    <span class="span-checkbox-font" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
+                                    font-size: 10pt !important;
+                                    color: black;">Environment</span>
+                                </label>
+                                <label>
+                                    <input class="filter-checkbox" type="checkbox" data-filter="category" value="medical-technology"/>
+                                    <span class="span-checkbox-font" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
+                                    font-size: 10pt !important;
+                                    color: black;">Medical Technology</span>
+                                </label>
                             </div>
                         </div>
                         <div class="col-xl-8 offset-small py-1 bg-light">
@@ -150,13 +192,14 @@
 <script>
     const result_box = document.querySelector('#result_box');
 
-    const sendSearchData = (thesis) => {
+    const sendSearchData = (thesis, tags) => {
 
         $.ajax ({
             type: 'POST',
             url: '{% url 'search' %}',
             data : {
-                'thesis': thesis
+                'thesis': thesis,
+                'tags' : tags,
             },
             headers: {"X-CSRFToken" : csrf_token},
 
@@ -211,7 +254,7 @@
     const csrf_token = document.querySelector('[name="csrfmiddlewaretoken"]').value;
     
 
-    search_field.addEventListener('keyup', (e) => {
+    search_field.addEventListener('input', (e) => {
 
         result_box.innerHTML = "";
 
@@ -257,14 +300,18 @@ anime.timeline({loop: true})
 
    
 $(document).ready(function() {
+    
     $('.filter-checkbox').on('click', function() {
         let _filterObj = {};
+
         $('.filter-checkbox').each(function(index, elm) {
             let _filterVal = $(this).val();
             let _filterKey = $(this).data('filter');
             _filterObj[_filterKey] = Array.from(document.querySelectorAll('input[data-filter='+_filterKey+']:checked')
             ).map(function(el){
-                console.log(el.value);
+                search_field.value = el.value
+                sendSearchData(search_field.value)
+
             })
         })
     });

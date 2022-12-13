@@ -49,7 +49,12 @@ class homePage(ListView):
     def post(self, request, *args, **kwargs):
         if self.request.headers.get('x-requested-with') == 'XMLHttpRequest':
             form_field = request.POST
-            thesis_query = Thesis.objects.filter(title__icontains=form_field['thesis']) 
+            print(form_field)
+            if 'tags' in form_field.keys():
+                thesis_query = Thesis.objects.filter(title__icontains=form_field['thesis'], tags__name=form_field['tags']) 
+            else:
+                thesis_query = Thesis.objects.filter(title__icontains=form_field['thesis']) 
+            
 
             if len(thesis_query) > 0 and len(form_field) > 0:
                 data = []
