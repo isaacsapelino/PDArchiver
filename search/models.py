@@ -7,6 +7,9 @@ import math
 from django.core.files.storage import FileSystemStorage
 from django.urls import reverse
 from django.template.defaultfilters import slugify
+from django.dispatch import receiver
+
+import os
 
 # Create your models here.
 
@@ -105,3 +108,9 @@ class Thesis(models.Model):
 
             else:
                 return str(years) + " years ago"
+
+@receiver(models.signals.post_delete, sender=Thesis)
+def auto_delete_file_on_delete(sender, instance, **kwargs):
+    if instance.document:
+        if os.path.isfile(instance.document.path):
+            os.remove(instance.document.path)
