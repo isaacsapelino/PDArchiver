@@ -99,7 +99,7 @@ class registerPage(View):
                 })
                 to_email = form.cleaned_data['email']
                 send_mail(mail_subject, message, email_from, [to_email])
-                messages.success(request, "Please confirm your email address to complete the registration'")
+                messages.success(request, "Please confirm your email address to complete the registration.")
                 return redirect('login')
             else:
                 messages.error(request, "User already exists")
@@ -123,19 +123,21 @@ class profilePage(View):
 
 class activatePage(View):
 
-    def get(self, request, uidb, token, *args, **kwargs):
+    def get(self, request, uidb64, token, *args, **kwargs):
         User = get_user_model()
         try:
-            uid = force_str(urlsafe_base64_decode(uidb))
+            uid = force_str(urlsafe_base64_decode(uidb64))
             user = User.objects.get(pk=uid)
         except(TypeError, ValueError, OverflowError, User.DoesNotExist):
             user = None
         if user is not None and account_activation_token.check_token(user, token):
             user.is_active = True
             user.save()
-            return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
+            messages.success(request, "Thank you for your email confirmation. Now you can login to your account.")
+            return redirect('login')
         else:
-            return HttpResponse('Activation link is invalid!')
+            messages.error(request, "Activation link is invalid.")
+            return redirect('login')
 
 @login_required(login_url='/')
 def logoutUser(request):
