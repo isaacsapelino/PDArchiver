@@ -1,8 +1,27 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from django.core.validators import RegexValidator
 from .models import PDFBaseUser
 
+class LoginForm(forms.Form):
+     studentNumber = forms.CharField(label='Student Number', max_length=255, widget=forms.TextInput(attrs={
+        'class' : 'validate',
+        'placeholder' : 'Student Number',
+     }))
+
+     userId = forms.CharField(label='User ID', max_length=255, widget=forms.TextInput(attrs={
+        'class' : 'validate',
+        'placeholder' : 'User ID',
+     }))
+     
+     password= forms.CharField(label='Password', max_length=255, widget=forms.PasswordInput(attrs={
+        'class' : 'validate',
+        'placeholder' : 'Enter your password',
+     }))
+        
+
 class RegisterForm(UserCreationForm):
+
     class Meta:
         model = PDFBaseUser
         fields = ['userId', 'firstName', 'middleName', 'lastName', 'email', 'studentNumber', 'password1', 'password2']
@@ -27,6 +46,11 @@ class RegisterForm(UserCreationForm):
             }),
         }
 
+    def clean_email(self):
+        data = self.cleaned_data['email']
+        if "@tip.edu.ph" not in data:
+            raise forms.ValidationError("must be a your institutional email")
+        return data
 
     def __init__(self, *args, **kwargs):
         super(RegisterForm, self).__init__(*args, **kwargs)

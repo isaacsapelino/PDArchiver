@@ -24,13 +24,13 @@
 								{% csrf_token %}
 								<div class="row">
 									<div class="input-field col s12">
-										<input id="userId" type="text" placeholder="User ID" class="validate" />
+										{{form.userId}}
 										<label for="userId" class="loginDialogLabel">User ID</label>
 									</div>
 								</div>
 								<div class="row">
 									<div class="input-field col s12">
-										<input id="password" type="password" placeholder="Password" class="validate" />
+										{{form.password}}
 										<label for="password" class="loginDialogLabel">Password</label>
 									</div>
 								</div>
@@ -46,28 +46,23 @@
 							</form>
 						</div>
 						<div id="studentLoginContainer" class="studentLoginContainer show">
-							<form action="#" method="POST" class="col s12">
+							<form method="POST" class="col s12">
 								{% csrf_token %}
 								<div class="row">
 									<div class="input-field col s12">
-										<input
-											id="studentNumber"
-											type="text"
-											placeholder="Student Number"
-											class="validate"
-										/>
+										{{form.studentNumber}}
 										<label for="studentNumber" class="loginDialogLabel">Student Number</label>
 									</div>
 								</div>
 								<div class="row">
 									<div class="input-field col s12">
-										<input id="userId" type="text" placeholder="User ID" class="validate" />
+										{{form.userId}}
 										<label for="userId" class="loginDialogLabel">User ID</label>
 									</div>
 								</div>
 								<div class="row">
 									<div class="input-field col s12">
-										<input id="password" type="password" placeholder="Password" class="validate" />
+										{{form.password}}
 										<label for="password" class="loginDialogLabel">Password</label>
 									</div>
 								</div>
@@ -83,9 +78,13 @@
 							</form>
 						</div>
 					</div>
+					{% if messages %} {% for message in messages %}
+					<div class="loginMessages">
+						<p>{{message}}</p>
+					</div>
+					{% endfor %} {% endif %}
 					<div class="loginScreenBoxBottom">
 						<p>Don't have an account yet? <a href="{% url 'register' %}">Sign Up</a></p>
-						<a href="#">Forgot your password</a>
 					</div>
 				</div>
 			</div>

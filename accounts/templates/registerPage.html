@@ -7,10 +7,10 @@
 		<div class="registerPageWrapperMainScreen">
 			<div class="registerPageWrapperTitle">
 				<h4>Create a Student Account</h4>
-				<p style="color: white">
+				<p style="color: black">
 					Already have an account? |
 					<a
-						style="color: white !important; text-decoration: underline; font-weight: 500"
+						style="color: black !important; text-decoration: underline; font-weight: 500"
 						href="{% url 'login' %}"
 						>Sign In</a
 					>
@@ -88,6 +88,11 @@
 							</button>
 						</div>
 					</form>
+					{% if form.errors %} {% for field in form %} {% for error in field.errors %}
+					<center>
+						<p style="font-weight: bold; color: red">{{field.label}} {{ error|escape }}</p>
+					</center>
+					{% endfor %} {% endfor %} {% endif %}
 				</div>
 			</div>
 		</div>

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     'accounts',
     'search',
+    'taggit',
 ]
 
 MIDDLEWARE = [
@@ -125,11 +126,25 @@ STATICFILES_DIRS = [
     Path(BASE_DIR, 'assets')
 ]
 
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'accounts.PDFBaseUser'
+AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend']
 
 LOGIN_URL='/'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = Path(BASE_DIR, 'media')
+
+TAGGIT_CASE_INSENSITIVE = True
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'faithmary.galon04@gmail.com '
+EMAIL_HOST_PASSWORD = 'xbndvwfjljjyqdoc'
+EMAIL_PORT = 587
