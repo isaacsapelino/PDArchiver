@@ -131,6 +131,9 @@
                                 <div id="result_box" class="list-group">
 
                                     {% for thesis in thesis %}
+                                    {% if user.is_superuser %}
+                                        <a href="{% url 'remove' id=thesis.id%}">Delete</a>
+                                    {% endif%}
                                     
                                     <a href="{% url 'abstract' thesis.slug %}" class="list-group-item list-group-item-action"  >
                                     <div class="d-flex w-100 justify-content-between">
