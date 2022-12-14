@@ -1,19 +1,20 @@
 .cfcf {
-    background-color: #1d4214;
-    font-weight: bold;
-    color: white;
-    font-family: "Poppins", sans-serif;
-    min-height: 100vh;
-    max-height: auto;
-    padding-left: 10em;
-    padding-right: 10em;
-    padding-top: 0;
-  }
+  background-color: #b6e388;
+  font-weight: bold;
+  color: black;
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  max-height: auto;
+  padding-left: 10em;
+  padding-right: 10em;
+  padding-top: 2em;
+}
 
   .container {
     position: relative;
     width: 100%;
     max-width: 400px;
+    
   }
   
   .image {
