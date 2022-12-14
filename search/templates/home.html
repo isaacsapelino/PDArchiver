@@ -132,23 +132,27 @@
 
                                     {% for thesis in thesis %}
                                     
-                                    <a href="{% url 'abstract' thesis.slug %}" class="list-group-item list-group-item-action"  >
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1" style="font-weight: bold;">{{thesis.title}}</h5>
-                                        <small>{{thesis.whenpublished}}</small>
-                                    </div>
-                                    <div class="abstract_desc" style="height: 10em; overflow: hidden;">
-                                        <p class="mb-1">{{thesis.abstract}}</p>
-                                    </div>
+                                    <a href="{% url 'abstract' thesis.slug %}" class="list-group-item list-group-item-action mb-3 mt-3"  >
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h5 class="mb-1" style="font-weight: bold;">{{thesis.title}}</h5>
+                                            <small>{{thesis.whenpublished}}</small>
+                                        </div>
+                                        <div class="abstract_desc" style="height: 10em; overflow: hidden;">
+                                            <p class="mb-1">{{thesis.abstract}}</p>
+                                        </div>
                                         {% for authors in thesis.authors.all %}
                                             <small>{{authors.detailName}},</small>
                                         {% endfor %} <br />
                                         {% for tags in thesis.tags.all %}
                                             <small>{{tags.name}},</small>
-                                    {% endfor %}
+                                        {% endfor %}
+                                        {% if user.is_superuser %}
+                                            <a href="{% url 'remove' id=thesis.id%}" class="btn btn-danger">Delete</a>
+                                        {% endif%}
+                                    </a>
                                     {% endfor %}
                                     
-                                    </a>
+                                    
                                     
                                 </div>
                             </div>
@@ -157,10 +161,12 @@
                             
                         </div>
                         </div>
+                      
                     </div>
                 </div>
-           
+                
         </div>
+        
         <!-- end of container for our layout -->
         {% if messages %} {% for message in messages %}
         <p>{{message}}</p>

@@ -193,6 +193,12 @@ class DownloadFile(DetailView):
         else:
             return HttpResponseNotFound('Error')
 
+class removeThesis(View):
+    def get(self, request,id,*args,**kwargs):
+        obj = Thesis.objects.get(id=id)
+        obj.delete()
+        return redirect('search')
+
         
 
         

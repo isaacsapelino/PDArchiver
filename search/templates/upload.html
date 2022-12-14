@@ -1,5 +1,17 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+  .uploadPageDivider {
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
+
 <div class="uploadPage">
   <link href="{% static 'css/upload.css' %}" rel="stylesheet" />
 <div class="return">
@@ -16,8 +28,11 @@
       {{ form.as_p }}
       <ul id="tagsList">
       </ul>
-      <button type="submit" id="submitBtn" style="font-size:18px" onclick="myFunction()"> Submit</button>
-      <button style="font-size:18px" onclick="history.back()">Cancel<i class="fa fa-arrow-circle-left"></i></button>
+      <div class="uploadPageDivider">
+        <button type="submit" id="submitBtn" class="w3-button w3-black w3-padding-large w3-large w3-margin-top" style="font-size:18px" onclick="myFunction()"> Submit</button>
+      <button style="font-size:18px" class="w3-button w3-black w3-padding-large w3-large w3-margin-top" onclick="history.back()">Cancel</button>
+      </div>
+      
     </form>
     
 
