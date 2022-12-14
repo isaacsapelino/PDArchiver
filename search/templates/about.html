@@ -1,14 +1,17 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %} {% load static %}
 
-<link rel="stylesheet" type="text/css" href="styles/about-us.css" />
-<meta charset="UTF-8">
-<meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/about-us.css' %}" />
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fontawesome.com/v5/icons/user-alt?s=solid&f=classic">
+
+{% endblock %}
+
+{% block content %}
+
 
 
 <header class="w3-container" style="background-color: #1d4214;">
@@ -18,7 +21,7 @@
 
 <div class="row" style="background-color:#CCD6A6;">
   <div class="column1">
-    <img src="images/demo/login.png" alt=""> 
+    <img src="{% static 'img/login.png' %}" alt=""> 
     <div class="hff">
       <h4> PROJECT DESIGN DOCUMENT ARCHIVER</h4>
     </div>
@@ -35,7 +38,7 @@
   <div class="column" style="background-color:#DAE2B6;">
     <h2>Developer Team</h2>
       <ul class="clear">
-          <figure><img src="images/demo/team1.png" alt="">
+          <figure><img src="{% static 'img/team1.png' %}" alt="">
             <figcaption>
               <p class="team_name">Jack Jr. G. Baconga</p>
               <p class="team_title">Railway Engineering</p>
@@ -43,7 +46,7 @@
             </figcaption>
           </figure>
       
-          <figure><img src="images/demo/team2.png" alt="">
+          <figure><img src="{% static 'img/team2.png' %}" alt="">
             <figcaption>
               <p class="team_name">Jerwellson H. Cabug</p>
               <p class="team_title">Intellegence System</p>
@@ -52,7 +55,7 @@
           </figure>
       
       
-          <figure><img src="images/demo/team3.png" alt="">
+          <figure><img src="{% static 'img/team3.png' %}" alt="">
             <figcaption>
               <p class="team_name">Faith Mary T. Galon</p>
               <p class="team_title">System Administrator</p>
@@ -67,7 +70,7 @@
  
       <ul class="clear">
  
-          <figure><img src="images/demo/team4.png" alt="">
+          <figure><img src="{% static 'img/team4.png' %}" alt="">
             <figcaption>
               <p class="team_name">John Lloyd L. Lanon</p>
               <p class="team_title">System Administrator</p>
@@ -76,7 +79,7 @@
           </figure>
     
      
-          <figure><img src="images/demo/team5.png" alt="">
+          <figure><img src="{% static 'img/team5.png' %}" alt="">
             <figcaption>
               <p class="team_name">Renzo L. Rañola</p>
               <p class="team_title">Data Science</p>
@@ -85,7 +88,7 @@
           </figure>
    
   
-          <figure><img src="images/demo/team6.png" alt="">
+          <figure><img src="{% static 'img/team6.png' %}" alt="">
             <figcaption>
               <p class="team_name">Dr. Jonathan V. Taylar</p>
               <p class="team_title">Instructor</p>
