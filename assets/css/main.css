@@ -332,6 +332,15 @@ h4 {
   border: 0;
 }
 
+#footer 
+.copyright {
+  letter-spacing: 0.2rem;
+  font-size: 0.6rem;
+  opacity: 0.75;
+  margin-bottom: 0;
+  text-transform: uppercase;
+}
+
 /* CHECKBOX FONTS */
 
 /*UPLOAD*/
