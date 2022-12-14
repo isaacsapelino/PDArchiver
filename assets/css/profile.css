@@ -1,15 +1,16 @@
 .cfcf {
-    background-color: #1d4214;
-    font-weight: bold;
-    color: white;
-    font-family: "Poppins", sans-serif;
-    min-height: 100vh;
-    max-height: auto;
-    padding-left: 10em;
-    padding-right: 10em;
-    padding-top: 0;
-  }
+  background-color: #b6e388;
+  font-weight: bold;
+  color: black;
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  max-height: auto;
+  padding-left: 10em;
+  padding-right: 10em;
+  padding-top: 0;
+}
 
+<<<<<<< HEAD
   .container {
     position: relative;
     width: 100%;
@@ -25,3 +26,27 @@
   }
   
  
+=======
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  padding-top: 3rem;
+}
+
+.image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
+  height: auto;
+}
+
+.w3-container {
+  padding-left: 0;
+}
+
+.w3-margin {
+  padding-top: 0;
+}
+>>>>>>> bb4a2627ba6748e478dde3bdc8a14ee9c5282241
