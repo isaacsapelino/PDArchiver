@@ -31,7 +31,7 @@ class Thesis(models.Model):
     slug = models.SlugField(null=True)
 
     def user_directory_path(instance, filename):
-        return 'user_{0}_{1}'.format(instance.uploader.userId, filename)
+        return 'user_{0}/{1}'.format(instance.uploader.userId, filename)
 
     document = models.FileField(upload_to=user_directory_path)
     tags = TaggableManager()
