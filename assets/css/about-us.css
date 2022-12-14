@@ -1,6 +1,4 @@
-* {
-    box-sizing: border-box;
-  }
+
   
   /* Create three equal columns that floats next to each other */
   .column {
@@ -19,7 +17,7 @@
     float: left;
     width: 33.33%;
     padding: 10px;
-    height: 895px;
+    height: auto;
     background-color: #CCD6A6;
     background-image: cross-fade();
     align-items: center;
@@ -39,14 +37,12 @@
   }
 
   .hf {
-    font: size 100o;
+    font: size 100;
     text-align: justify;
     border-image: auto;
   }
 
-  .row{
-    font-size: medium;
-  }
+
 
   .column1 img {
     height: 450px;
@@ -55,10 +51,12 @@
 
   }
   .hff {
+    
     text-align: center;
     
   }
   .hff h4  {
+    color: black;
     font-family: "Times New Roman", Times, serif;
   }
 
