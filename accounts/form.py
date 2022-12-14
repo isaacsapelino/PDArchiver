@@ -46,10 +46,28 @@ class RegisterForm(UserCreationForm):
             }),
         }
 
+    def clean_password2(self):
+        password1 = self.cleaned_data['password1']
+        password2 = self.cleaned_data['password2']
+
+        if password1 and password2 and password1 != password2:
+            raise forms.ValidationError('Passwords do not match.')
+        return password2
+
+    def clean_userId(self):
+        data = self.cleaned_data['userId']
+        if PDFBaseUser.objects.filter(userId=data).exists():
+            raise forms.ValidationError('User ID already exists. Please try a different one.')
+        return data
+
     def clean_email(self):
         data = self.cleaned_data['email']
         if "@tip.edu.ph" not in data:
-            raise forms.ValidationError("must be a your institutional email")
+            raise forms.ValidationError("Please use your institutional email.")
+
+        if PDFBaseUser.objects.filter(email=data).exists():
+            raise forms.ValidationError("Please use a valid email address.")
+
         return data
 
     def __init__(self, *args, **kwargs):
