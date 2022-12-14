@@ -199,6 +199,15 @@ class removeThesis(View):
         obj.delete()
         return redirect('search')
 
+@method_decorator(login_required, name='dispatch')
+class aboutPage(View):
+    def get(self, request, *args, **kwargs):
+
+        context = {
+
+        }
+        return render(request, template_name='about.html', context=context)
+
         
 
         
