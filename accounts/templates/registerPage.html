@@ -90,7 +90,7 @@
 					</form>
 					{% if form.errors %} {% for field in form %} {% for error in field.errors %}
 					<center>
-						<p style="font-weight: bold; color: red">{{field.label}} {{ error|escape }}</p>
+						<p style="font-weight: bold; color: red">{{ error|escape }}</p>
 					</center>
 					{% endfor %} {% endfor %} {% endif %}
 				</div>
