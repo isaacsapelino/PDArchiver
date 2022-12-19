@@ -75,3 +75,26 @@ class RegisterForm(UserCreationForm):
         self.fields['password1'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Enter your password'})
         self.fields['password2'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Confirm your password'})
 
+class ChangePasswordForm(forms.Form):
+    curr_password = forms.CharField(label='Current Password', max_length=8, widget=forms.PasswordInput(attrs={
+        'class' : 'validate',
+        'placeholder' : 'Enter your current password',
+     }))
+
+    password1 = forms.CharField(label='New Password', max_length=8, widget=forms.PasswordInput(attrs={
+        'class' : 'validate',
+        'placeholder' : 'Enter your new password',
+     }))
+    
+    password2 = forms.CharField(label='Confirm Password', max_length=8, widget=forms.PasswordInput(attrs={
+        'class' : 'validate',
+        'placeholder' : 'Enter your password',
+     }))
+
+    def clean_password2(self):
+        password1 = self.cleaned_data['password1']
+        password2 = self.cleaned_data['password2']
+
+        if password1 and password2 and password1 != password2:
+            raise forms.ValidationError('Passwords do not match. Please try again.')
+        return password2

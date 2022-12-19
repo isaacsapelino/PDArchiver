@@ -10,19 +10,23 @@
   padding-top: 2em;
 }
 
-  .container {
-    position: relative;
-    width: 100%;
-    max-width: 400px;
-    
-  }
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
   
-  .image {
-    
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-  }
+}
   
+.image {
+  
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+  
+input[type=password]::placeholder {
+  color: black !important;
+  opacity: 1 !important;
+}
  

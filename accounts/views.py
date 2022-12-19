@@ -21,7 +21,7 @@ from django.http import HttpResponse
 
 
 from .models import PDFBaseUser
-from .form import RegisterForm,LoginForm
+from .form import RegisterForm,LoginForm,ChangePasswordForm
 from .tokens import account_activation_token
 
 # Create your views here.
@@ -115,10 +115,35 @@ class profilePage(View):
 
     def get(self, request, userId, *args, **kwargs):
         User = get_user_model()
+        form = ChangePasswordForm()
 
         pdfUser = User.objects.get(userId=userId)
         context = {
             'user' : pdfUser,
+            'form' : form,
+        }
+
+        return render (request,template_name='profilePage.html', context=context)
+
+    def post(self, request, userId, *args, **kwargs):
+        User = get_user_model()
+        form = ChangePasswordForm(request.POST)
+        pdfUser = User.objects.get(userId=userId)
+
+        if form.is_valid():
+            password = form.cleaned_data['password1']
+            pdfUser.set_password(password)
+            pdfUser.save()
+            messages.success(request, "Password has been changed.")
+            return redirect('/search/home')
+        else:
+            messages.error(request, "Error while trying to change password.")
+
+
+        
+        context = {
+            'user' : pdfUser,
+            'form' : form,
         }
 
         return render (request,template_name='profilePage.html', context=context)
