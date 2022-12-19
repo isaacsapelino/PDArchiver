@@ -10,7 +10,7 @@
 			</div>
 			<div class="loginScreenBox">
 				<div class="loginScreenBoxDialog">
-						<div class="loginDialogHeaderGrid">
+					<div class="loginDialogHeaderGrid">
 						<div class="loginDialogGridItem">
 							<a id="switchToStudent" class="loginSwitchLinks isSelected" href="#">Student</a>
 						</div>
@@ -83,8 +83,10 @@
 						<p>{{message}}</p>
 					</div>
 					{% endfor %} {% endif %}
-					<div class="loginScreenBoxBottom">
-						<p>Don't have an account yet? <a href="{% url 'register' %}">Sign Up</a></p>
+					<div id="loginScreenBoxBottom" class="loginScreenBoxBottom">
+						<p id="loginScreenBottomText">
+							Don't have an account yet? <a href="{% url 'register' %}">Sign Up</a>
+						</p>
 					</div>
 				</div>
 			</div>

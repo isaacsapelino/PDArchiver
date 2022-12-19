@@ -12,7 +12,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fontawesome.com/v5/icons/user-alt?s=solid&f=classic">
 <link href="{% static 'css/profile.css' %}" rel="stylesheet" />
-
 </head>
 <body>
 
@@ -23,10 +22,8 @@
   <h1 class="w3-margin w3-jumbo w3-center" style="color:white">PROFILE</h1>
   <h3 class="w3-margin w3-w3-medium w3-center" style="color:white"> Account Information </h3>
 </header>
- 
 
-
-<form class="cf">
+<form class="cf" method="POST">
   <div class="cfcf">
     <div class="container">
       <img src="{% static 'img/avatarss.png' %}" alt="Avatar" class="image">
@@ -34,7 +31,7 @@
       <a href="#" class="icon" title="User Profile"> </a>
       </div>
     </div>
-
+    {% csrf_token %}
     <br />
     <center>  
     <label for="fname"> Full Name </label>
@@ -43,15 +40,53 @@
     <p>{{user.userId}}</p>
     <label for="userID"> Email</label>
     <p>{{user.email}}</p>
-    </center>
+    <br />
+    
+    <div id="show">
+      <button type="button"> CHANGE PASSWORD</button></div>
+    
+    <br />
+    <div class="menu" style="display: none;">
+        <ol>
+            <label for="Currentpwd">Current Password:</label>
+            {{form.curr_password}}
+            <label for="Newpwd">&nbsp;&nbsp; &nbsp;&nbsp; New Password:</label>
+            {{form.password1}}
+            <label for="Confirmpwd">Confirm  Password:</label>
+            {{form.password2}}
+        </ol>
+        <button type="submit" id="submitchangeBtn" class="w3-button w3-black w3-padding-medium w3-medium w3-margin-top"  onclick="PwdChange"> Submit</button>
+    </div>
+    <br />
+    </center>   
+    {% if messages %} {% for message in messages %}
+  <div class="loginMessages">
+    <p>{{message}}</p>
   </div>
-  </div>
+{% endfor %} {% endif %}
+{% if form.errors %} {% for field in form %} {% for error in field.errors %}
+					<center>
+						<p style="font-weight: bold; color: red">{{ error|escape }}</p>
+					</center>
+{% endfor %} {% endfor %} {% endif %}
   
-</form>
-<script
-  src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'>
+  </div>
 
-</script>
+</div>
+
+</form>
+
+
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script>
+  $(document).ready(function(){
+      $('#show').click(function() {
+        $('.menu').toggle("slide");
+      });
+  });
+  </script>
+
 
 </body>
 
