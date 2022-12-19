@@ -26,6 +26,7 @@
  
 
 
+
 <form class="cf">
   <div class="cfcf">
     <div class="container">
@@ -43,15 +44,46 @@
     <p>{{user.userId}}</p>
     <label for="userID"> Email</label>
     <p>{{user.email}}</p>
-    </center>
-  </div>
-  </div>
-  
-</form>
-<script
-  src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'>
+    <label for="password"> Password</label>
+    <p>{{user.password}}</p>
 
-</script>
+
+    
+    <div id="show">
+      <button type="button"> CHANGE PASSWORD?</button></div>
+    
+    <div class="menu" style="display: none;">
+        <ol>
+            <label for="Currentpwd">Current  Password:</label>
+            <input type="Cpwd" id="pwd" name="pwd" minlength="8"><br>
+            <label for="Newpwd">&nbsp;&nbsp; &nbsp;&nbsp; New  Passwor:</label>
+            <input type="Npwd" id="pwd" name="pwd" minlength="8"><br>
+            <label for="Confirmpwd">Confirm  Password:</label>
+            <input type="Cpwd" id="pwd" name="pwd" minlength="8"><br>
+        </ol>
+        <button type="submit" id="submitchangeBtn" class="w3-button w3-black w3-padding-medium w3-medium w3-margin-top"  onclick="PwdChange"> Submit</button>
+    </div>
+
+
+
+    
+    </center>
+    
+  
+  </div>
+</div>
+
+</form>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script>
+  $(document).ready(function(){
+      $('#show').click(function() {
+        $('.menu').toggle("slide");
+      });
+  });
+  </script>
+
 
 </body>
 
